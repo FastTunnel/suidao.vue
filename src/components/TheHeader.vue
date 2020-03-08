@@ -17,25 +17,27 @@
 .menu-item :hover {
   color: #000;
 }
+
 .menu {
 }
-.menu-item-btn {
+.nav-link {
   font-size: 16px;
+  text-decoration: none;
 }
 </style>
 
 <template>
-    <div class="container-xl">
-        <div class="menu">
-            <div class="menu-item">
-                <div class="menu-item-btn">首页</div>
-            </div>
-            <div class="menu-item" style="float: right;">
-                <el-button size="small" type="text">登录</el-button>
-                <el-button size="small">注册</el-button>
-            </div>
-        </div>
+  <div class="container-xl">
+    <div class="menu">
+      <div class="menu-item">
+        <router-link :to="{ name: 'home' }" class="nav-link" active-class="active">首页</router-link>
+      </div>
+      <div class="menu-item" style="float: right;">
+        <el-button size="small" type="text" @click="login">登录</el-button>
+        <el-button size="small" @click="signup">注册</el-button>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -48,6 +50,16 @@ export default {
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+    },
+    login() {
+      this.$router.push({
+        name: "login"
+      });
+    },
+    signup() {
+      this.$router.push({
+        name: "signup"
+      });
     }
   }
 };

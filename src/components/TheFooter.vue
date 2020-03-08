@@ -7,7 +7,7 @@
 
 
 <template>
-    <div class="footer">suida.io</div>
+  <div class="footer">FastTunnel</div>
 </template>
 
 <script>
