@@ -40,7 +40,9 @@ body {
         <RwvHeader/>
       </el-header>
       <el-main class="boder-top boder-bottom">
-        <router-view></router-view>
+        <div class="body">
+          <router-view></router-view>
+        </div>
       </el-main>
       <el-footer>
         <RwvFooter></RwvFooter>

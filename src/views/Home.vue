@@ -1,13 +1,12 @@
 <style>
-.body {
+.welcome {
   font-size: 50px;
-  padding-top: 150px;
 }
 </style>
 
 <template>
-  <div class="body">
-    <div>Welcome To FastTunnel</div>
+  <div>
+    <div class="welcome">Welcome To FastTunnel</div>
   </div>
 </template>
 
