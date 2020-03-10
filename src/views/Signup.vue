@@ -1,8 +1,4 @@
 <style>
-.sign-form {
-  width: 600px;
-  margin: auto;
-}
 .title {
   padding: 10px 0;
   font-size: 30px;
@@ -13,24 +9,24 @@
   <div>
     <div class="title">注册</div>
     <el-form
-      :model="ruleForm"
+      :model="signForm"
       status-icon
       :rules="rules"
-      ref="ruleForm"
+      ref="signForm"
       label-width="100px"
       class="sign-form"
     >
       <el-form-item label="注册邮箱" prop="email">
-        <el-input v-model="ruleForm.email"></el-input>
+        <el-input v-model="signForm.email"></el-input>
       </el-form-item>
       <el-form-item label="登录密码" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+        <el-input type="password" v-model="signForm.pass" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="checkPass">
-        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+        <el-input type="password" v-model="signForm.checkPass" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label-width="0px">
-        <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
+        <el-button type="primary" @click="submitForm('signForm')">注册</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -53,8 +49,8 @@ export default {
       if (value === "") {
         callback(new Error("请输入密码"));
       } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
+        if (this.signForm.checkPass !== "") {
+          this.$refs.signForm.validateField("checkPass");
         }
         callback();
       }
@@ -62,7 +58,7 @@ export default {
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
-      } else if (value !== this.ruleForm.pass) {
+      } else if (value !== this.signForm.pass) {
         callback(new Error("两次输入密码不一致!"));
       } else {
         callback();
@@ -70,7 +66,7 @@ export default {
     };
 
     return {
-      ruleForm: {
+      signForm: {
         email: "",
         pass: "",
         checkPass: ""
@@ -95,8 +91,10 @@ export default {
       });
     },
     sign() {
+      console.log("signService", signService);
+
       return signService
-        .sign()
+        .sign(this.signForm)
         .then(() => {
           //
         })

@@ -1,7 +1,9 @@
 import ApiService from "@/common/api.service"
 
 export const TagsService = {
-    get() {
-        return ApiService.get("tags");
+    sign(param) {
+        return ApiService.post("sign/sign", param);
     }
 };
+
+export default TagsService;
