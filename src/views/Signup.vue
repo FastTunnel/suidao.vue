@@ -4,7 +4,10 @@
   font-size: 30px;
 }
 </style>
-
+user_id,
+email,
+pwd,
+sign_time
 <template>
   <div>
     <div class="title">注册</div>
@@ -19,11 +22,11 @@
       <el-form-item label="注册邮箱" prop="email">
         <el-input v-model="signForm.email"></el-input>
       </el-form-item>
-      <el-form-item label="登录密码" prop="pass">
-        <el-input type="password" v-model="signForm.pass" autocomplete="off"></el-input>
+      <el-form-item label="登录密码" prop="pwd">
+        <el-input type="password" v-model="signForm.pwd" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="确认密码" prop="checkPass">
-        <el-input type="password" v-model="signForm.checkPass" autocomplete="off"></el-input>
+      <el-form-item label="确认密码" prop="check_pwd">
+        <el-input type="password" v-model="signForm.check_pwd" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label-width="0px">
         <el-button type="primary" @click="submitForm('signForm')">注册</el-button>
@@ -68,12 +71,12 @@ export default {
     return {
       signForm: {
         email: "",
-        pass: "",
-        checkPass: ""
+        pwd: "",
+        check_pwd: ""
       },
       rules: {
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }],
+        pwd: [{ validator: validatePass, trigger: "blur" }],
+        check_pwd: [{ validator: validatePass2, trigger: "blur" }],
         email: [{ validator: checkEmail, trigger: "blur" }]
       }
     };
@@ -92,14 +95,30 @@ export default {
     },
     sign() {
       console.log("signService", signService);
-
+      let that = this;
       return signService
         .sign(this.signForm)
-        .then(() => {
-          //
+        .then(res => {
+          if (res.data.success) {
+            that.$message({
+              showClose: true,
+              message: res.data.errorMsg,
+              type: "success"
+            });
+          } else {
+            that.$message({
+              showClose: true,
+              message: res.data.errorMsg,
+              type: "error"
+            });
+          }
         })
         .catch(error => {
-          throw new Error(error);
+          that.$message({
+            showClose: true,
+            message: error,
+            type: "error"
+          });
         });
     }
   }
