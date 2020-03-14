@@ -37,7 +37,7 @@ sign_time
 
 <script>
 import checks from "@/utils/checks.js";
-import signService from "@/common/sign.service.js";
+import signService from "@/common/user.service.js";
 
 export default {
   data() {
@@ -52,8 +52,8 @@ export default {
       if (value === "") {
         callback(new Error("请输入密码"));
       } else {
-        if (this.signForm.checkPass !== "") {
-          this.$refs.signForm.validateField("checkPass");
+        if (this.signForm.check_pwd !== "") {
+          this.$refs.signForm.validateField("check_pwd");
         }
         callback();
       }
@@ -61,7 +61,7 @@ export default {
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
-      } else if (value !== this.signForm.pass) {
+      } else if (value !== this.signForm.check_pwd) {
         callback(new Error("两次输入密码不一致!"));
       } else {
         callback();

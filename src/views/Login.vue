@@ -30,18 +30,22 @@
 </template>
 
 <script>
+import checks from "@/utils/checks.js";
+import signService from "@/common/user.service.js";
+
 export default {
   data() {
     var checkEmail = (rule, value, callback) => {
-      callback();
+      if (checks.check_email(value)) {
+        callback();
+      } else {
+        callback(new Error("请输入正确的邮箱"));
+      }
     };
     var validatePass = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请输入密码"));
       } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
-        }
         callback();
       }
     };
@@ -59,9 +63,31 @@ export default {
   },
   methods: {
     submitForm(formName) {
+      let that = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          signService
+            .login(this.ruleForm)
+            .then(res => {
+              if (res.data.success) {
+                // {"success":true,"errorCode":0,"errorMsg":"登录成功","data":{"token":"90b2ab24-831f-4f22-a689-b71bc070974d","expire_time":"2020-03-15T00:10:01.1959311+08:00"}}
+                // 登录成功
+                console.log(res.data);
+              } else {
+                that.$message({
+                  showClose: true,
+                  message: res.data.errorMsg,
+                  type: "error"
+                });
+              }
+            })
+            .catch(error => {
+              that.$message({
+                showClose: true,
+                message: error,
+                type: "error"
+              });
+            });
         } else {
           console.log("error submit!!");
           return false;
