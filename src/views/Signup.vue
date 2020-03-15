@@ -36,8 +36,9 @@ sign_time
 </template>
 
 <script>
+import { mapState } from "vuex";
 import checks from "@/utils/checks.js";
-import signService from "@/common/user.service.js";
+import { REGISTER } from "@/store/actions.type";
 
 export default {
   data() {
@@ -94,33 +95,18 @@ export default {
       });
     },
     sign() {
-      console.log("signService", signService);
-      let that = this;
-      return signService
-        .sign(this.signForm)
-        .then(res => {
-          if (res.data.success) {
-            that.$message({
-              showClose: true,
-              message: res.data.errorMsg,
-              type: "success"
-            });
-          } else {
-            that.$message({
-              showClose: true,
-              message: res.data.errorMsg,
-              type: "error"
-            });
-          }
-        })
+      this.$store
+        .dispatch(REGISTER, this.signForm)
+        .then(() => this.$router.push({ name: "home" }))
         .catch(error => {
-          that.$message({
-            showClose: true,
-            message: error,
-            type: "error"
-          });
+          this.$message.error(error);
         });
     }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
 };
 </script>

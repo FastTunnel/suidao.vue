@@ -44,7 +44,7 @@ const mutations = {
 
 const actions = {
   [LOGIN](context, credentials) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       ApiService.post("users/login", credentials)
         .then(({ data }) => {
           if (data.success) {
@@ -52,6 +52,7 @@ const actions = {
             resolve(data);
           } else {
             context.commit(SET_ERROR, data.errorMsg);
+            reject(data.errorMsg);
           }
         })
         .catch(({ response }) => {
@@ -64,18 +65,24 @@ const actions = {
   },
   [REGISTER](context, credentials) {
     return new Promise((resolve, reject) => {
-      ApiService.post("users", { user: credentials })
+      ApiService.post("users/sign", credentials)
         .then(({ data }) => {
-          context.commit(SET_AUTH, data.user);
-          resolve(data);
+          console.log('sign data', data)
+          if (data.success) {
+            resolve(data);
+          } else {
+            context.commit(SET_ERROR, data.errorMsg);
+            reject(data.errorMsg);
+          }
         })
         .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+          context.commit(SET_ERROR, response);
           reject(response);
         });
     });
   },
   [CHECK_AUTH](context) {
+    // 检查是否过期
     if (JwtService.getToken()) {
       ApiService.setHeader();
       ApiService.get("user")
