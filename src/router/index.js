@@ -19,6 +19,16 @@ const routes = [
         name: "signup",
         component: () => import("@/views/Signup"),
     },
+    {
+        path: "/user",
+        name: "user",
+        component: () => import("@/views/UserInfo"),
+    },
+    {
+        path: "/console",
+        name: "console",
+        component: () => import("@/views/Console"),
+    },
 ]
 
 export default new Router({

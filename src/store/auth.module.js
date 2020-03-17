@@ -9,6 +9,8 @@ import {
   UPDATE_USER
 } from "./actions.type";
 
+const ID_USER = "id_user";
+
 const state = {
   errors: null,
   user: {},
@@ -33,11 +35,14 @@ const mutations = {
     state.user = user;
     state.errors = {};
     JwtService.saveToken(state.user.token);
+    JwtService.saveItem(ID_USER, state.user);
+    ApiService.setHeader();
   },
   [PURGE_AUTH](state) {
     state.isAuthenticated = false;
     state.user = {};
     state.errors = {};
+    JwtService.destroyItem(ID_USER);
     JwtService.destroyToken();
   }
 };
@@ -56,7 +61,7 @@ const actions = {
           }
         })
         .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+          context.commit(SET_ERROR, response);
         });
     });
   },
@@ -67,7 +72,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       ApiService.post("users/sign", credentials)
         .then(({ data }) => {
-          console.log('sign data', data)
           if (data.success) {
             resolve(data);
           } else {
@@ -83,15 +87,14 @@ const actions = {
   },
   [CHECK_AUTH](context) {
     // 检查是否过期
-    if (JwtService.getToken()) {
-      ApiService.setHeader();
-      ApiService.get("user")
-        .then(({ data }) => {
-          context.commit(SET_AUTH, data.user);
-        })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
-        });
+    var user = JwtService.getItem(ID_USER);
+    if (user) {
+      if (user.token) {
+        console.log('user.token', user.token);
+      }
+
+      
+      context.commit(SET_AUTH, user);
     } else {
       context.commit(PURGE_AUTH);
     }
