@@ -40,12 +40,12 @@
         <div v-if="isAuthenticated">
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
-              {{currentUser.email}}
+              {{currentUser.profile.name}}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
               <el-dropdown-item>
-                <router-link :to="{ name: 'user'}" class="el-link el-link--default">个人中心</router-link>
+                <router-link :to="{ name: 'profile'}" class="el-link el-link--default">个人中心</router-link>
               </el-dropdown-item>
               <el-dropdown-item>
                 <router-link :to="{ name: 'console'}" class="el-link el-link--default">控制台</router-link>
@@ -62,6 +62,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { LOGOUT } from "@/store/actions.type";
+import { LOGIN_CODE } from "@/store/actions.type";
 
 export default {
   data() {
@@ -74,6 +75,9 @@ export default {
       console.log(key, keyPath);
     },
     login() {
+      this.$store.dispatch(LOGIN_CODE);
+    },
+    loginByPwd() {
       this.$router.push({
         name: "login"
       });

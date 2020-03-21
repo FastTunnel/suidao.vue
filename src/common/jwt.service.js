@@ -2,7 +2,6 @@ const ID_TOKEN_KEY = "id_token";
 
 export const getToken = () => {
   var token = window.localStorage.getItem(ID_TOKEN_KEY);
-  console.log('token', token);
   return token;
 };
 
@@ -20,7 +19,6 @@ export const destroyItem = (key) => {
 
 export const getItem = (key) => {
   var item = window.localStorage.getItem(key);
-  console.log('item', item);
   if (item && item.indexOf('{') > -1) {
     return JSON.parse(item);
   }

@@ -10,6 +10,11 @@ const routes = [
         component: () => import("@/views/Home"),
     },
     {
+        path: "/callback",
+        name: "callback",
+        component: () => import("@/views/Callback"),
+    },
+    {
         path: "/login",
         name: "login",
         component: () => import("@/views/Login"),
@@ -20,17 +25,18 @@ const routes = [
         component: () => import("@/views/Signup"),
     },
     {
-        path: "/user",
-        name: "user",
-        component: () => import("@/views/UserInfo"),
+        path: "/profile",
+        name: "profile",
+        component: () => import("@/views/Profile"),
     },
     {
         path: "/console",
         name: "console",
         component: () => import("@/views/Console"),
-    },
+    }
 ]
 
 export default new Router({
+    mode: "history",
     routes,
 });

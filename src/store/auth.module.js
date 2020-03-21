@@ -3,13 +3,26 @@ import ApiService from "@/common/api.service";
 import { SET_AUTH, PURGE_AUTH, SET_ERROR } from "./mutations.type";
 import {
   LOGIN,
+  LOGIN_CODE,
   LOGOUT,
   REGISTER,
   CHECK_AUTH,
   UPDATE_USER
 } from "./actions.type";
+import Oidc from "oidc-client";
 
 const ID_USER = "id_user";
+
+var config = {
+  authority: "http://localhost:5000",
+  client_id: "js",
+  redirect_uri: "http://localhost:8080/callback",
+  response_type: "code",
+  scope: "openid profile api1",
+  post_logout_redirect_uri: "http://localhost:8080/"
+};
+
+const mgr = new Oidc.UserManager(config);
 
 const state = {
   errors: null,
@@ -34,8 +47,11 @@ const mutations = {
     state.isAuthenticated = true;
     state.user = user;
     state.errors = {};
-    JwtService.saveToken(state.user.token);
+
+    console.log('-- SET_AUTH --', user);
+    JwtService.saveToken(state.user.access_token);
     JwtService.saveItem(ID_USER, state.user);
+
     ApiService.setHeader();
   },
   [PURGE_AUTH](state) {
@@ -44,13 +60,14 @@ const mutations = {
     state.errors = {};
     JwtService.destroyItem(ID_USER);
     JwtService.destroyToken();
+    // mgr.signoutRedirect();
   }
 };
 
 const actions = {
   [LOGIN](context, credentials) {
     return new Promise((resolve, reject) => {
-      ApiService.post("users/login", credentials)
+      ApiService.post("user/login", credentials)
         .then(({ data }) => {
           if (data.success) {
             context.commit(SET_AUTH, data.data);
@@ -65,12 +82,24 @@ const actions = {
         });
     });
   },
+  [LOGIN_CODE]() {
+    mgr.signinRedirect();
+  },
+  [CHECK_AUTH](context) {
+    // 检查是否过期
+    var user = JwtService.getItem(ID_USER);
+    if (user) {
+      context.commit(SET_AUTH, user);
+    } else {
+      context.commit(PURGE_AUTH);
+    }
+  },
   [LOGOUT](context) {
     context.commit(PURGE_AUTH);
   },
   [REGISTER](context, credentials) {
     return new Promise((resolve, reject) => {
-      ApiService.post("users/sign", credentials)
+      ApiService.post("user/sign", credentials)
         .then(({ data }) => {
           if (data.success) {
             resolve(data);
@@ -85,36 +114,8 @@ const actions = {
         });
     });
   },
-  [CHECK_AUTH](context) {
-    // 检查是否过期
-    var user = JwtService.getItem(ID_USER);
-    if (user) {
-      if (user.token) {
-        console.log('user.token', user.token);
-      }
-
-      
-      context.commit(SET_AUTH, user);
-    } else {
-      context.commit(PURGE_AUTH);
-    }
-  },
-  [UPDATE_USER](context, payload) {
-    const { email, username, password, image, bio } = payload;
-    const user = {
-      email,
-      username,
-      bio,
-      image
-    };
-    if (password) {
-      user.password = password;
-    }
-
-    return ApiService.put("user", user).then(({ data }) => {
-      context.commit(SET_AUTH, data.user);
-      return data;
-    });
+  [UPDATE_USER](context, user) {
+    context.commit(SET_AUTH, user);
   }
 };
 
