@@ -40,7 +40,7 @@
         <div v-if="isAuthenticated">
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
-              {{currentUser.profile.name}}
+              {{ currentUser && currentUser.profile ? currentUser.profile.name:""}}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
@@ -63,6 +63,8 @@
 import { mapGetters } from "vuex";
 import { LOGOUT } from "@/store/actions.type";
 import { LOGIN_CODE } from "@/store/actions.type";
+import Mgr from '@/common/SecurityService';
+let mgr = new Mgr();
 
 export default {
   data() {
@@ -88,11 +90,12 @@ export default {
       });
     },
     logOut() {
-      this.$store.dispatch(LOGOUT).then(() => {
-        if (this.$router.history.current.name !== "home") {
-          this.$router.push({ name: "home" });
-        }
-      });
+      // this.$store.dispatch(LOGOUT).then(() => {
+      //   if (this.$router.history.current.name !== "home") {
+      //     this.$router.push({ name: "home" });
+      //   }
+      // });
+      mgr.signOut();
     }
   },
   computed: {

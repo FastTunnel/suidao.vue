@@ -88,6 +88,7 @@ const actions = {
   [CHECK_AUTH](context) {
     // 检查是否过期
     var user = JwtService.getItem(ID_USER);
+    console.log(user);
     if (user) {
       context.commit(SET_AUTH, user);
     } else {

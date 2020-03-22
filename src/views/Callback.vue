@@ -16,16 +16,32 @@ export default {
   },
   mounted() {
     let that = this;
-    new Oidc.UserManager({ response_mode: "query" })
+    var mgr = new Oidc.UserManager({
+      userStore: new Oidc.WebStorageStateStore(),
+      loadUserInfo: true,
+      filterProtocolClaims: true,
+      response_mode: "query"
+    });
+
+    mgr
       .signinRedirectCallback()
       .then(function(user) {
-        //  登录成功
-        that.$store.dispatch(UPDATE_USER, user);
-        window.location = "/";
+        window.location.href = "/";
       })
-      .catch(function(e) {
-        that.error = e;
+      .catch(function(err) {
+        console.log(err);
       });
+
+    // new Oidc.UserManager({ response_mode: "query" })
+    //   .signinRedirectCallback()
+    //   .then(function(user) {
+    //     //  登录成功
+    //     // that.$store.dispatch(UPDATE_USER, user);
+    //     window.location = "/";
+    //   })
+    //   .catch(function(e) {
+    //     that.error = e;
+    //   });
   }
 };
 </script>

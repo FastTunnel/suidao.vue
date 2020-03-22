@@ -4,10 +4,12 @@ import router from "./router";
 import ElementUI from 'element-ui';
 import store from "./store";
 import ApiService from "./common/api.service";
-import { CHECK_AUTH } from "./store/actions.type";
+import { UPDATE_USER, LOGOUT } from "./store/actions.type";
 
 import '@/assets/scss/element-variables.scss'
 import '@/assets/scss/main.scss'
+import Mgr from '@/common/SecurityService';
+let mgr = new Mgr();
 
 console.log('----启动----');
 
@@ -18,7 +20,32 @@ Vue.use(ElementUI, { size: 'medium', zIndex: 3000 });
 // Ensure we checked auth before each page load.
 router.beforeEach((to, from, next) => {
   console.log('-- beforeEach', from.name, "->", to.name);
-  Promise.all([store.dispatch(CHECK_AUTH)]).then(next)
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  if (requiresAuth) {
+    mgr.getUser(true).then(user => {
+      console.log(user);
+      if (user) {
+        store.dispatch(UPDATE_USER, user);
+      } else {
+        store.dispatch(LOGOUT, user);
+      }
+    }).catch(err => {
+      console.log(err);
+    })
+    next();
+  } else {
+    mgr.getUser().then(user => {
+      console.log(user);
+      if (user) {
+        store.dispatch(UPDATE_USER, user);
+      } else {
+        store.dispatch(LOGOUT, user);
+      }
+    }).catch(err => {
+      console.log(err);
+    })
+    next();
+  }
 });
 
 new Vue({

@@ -15,6 +15,11 @@ const routes = [
         component: () => import("@/views/Callback"),
     },
     {
+        path: "/silent",
+        name: "silent",
+        component: () => import("@/views/Silent"),
+    },
+    {
         path: "/login",
         name: "login",
         component: () => import("@/views/Login"),
@@ -28,11 +33,25 @@ const routes = [
         path: "/profile",
         name: "profile",
         component: () => import("@/views/Profile"),
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/console",
         name: "console",
         component: () => import("@/views/Console"),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+      path: '/accessdenied',
+      name: 'AccessDenied',
+      component: () => import("@/views/AccessDenied"),
+      meta: {
+        requiresAuth: false
+      }
     }
 ]
 

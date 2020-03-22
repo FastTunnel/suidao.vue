@@ -5,7 +5,7 @@
 </style>
 
 <template>
-  <div>{{currentUser.email}}</div>
+  <div>{{currentUser.profile.name}}</div>
 </template>
 
 <script>
@@ -20,11 +20,11 @@ export default {
   computed: {
     ...mapGetters(["currentUser", "profile", "isAuthenticated"])
   },
-  watch: {
-    // $route(to) {
-    //   this.$store.dispatch(FETCH_PROFILE, to.params);
-    // }
-  },
+  // watch: {
+  //   $route(to) {
+  //     this.$store.dispatch(FETCH_PROFILE, to.params);
+  //   }
+  // },
   mounted() {
     console.log("FETCH_PROFILE");
     this.$store.dispatch(FETCH_PROFILE);
