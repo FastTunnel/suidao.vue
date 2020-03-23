@@ -24,13 +24,24 @@
   font-size: 16px;
   text-decoration: none;
 }
+.el-image__inner {
+  vertical-align: baseline;
+}
+.logo {
+  width: 35px;
+  height: 35px;
+  top: 10px;
+  left: -11px;
+}
 </style>
 
 <template>
   <div class="container-xl">
     <div class="menu">
       <div class="menu-item">
-        <router-link :to="{ name: 'home' }" class="nav-link" active-class="active">首页</router-link>
+        <router-link :to="{ name: 'home' }" class="nav-link" active-class="active">
+          <el-image class="logo" src="logo.png" fit="fit"></el-image>首页
+        </router-link>
       </div>
       <div class="menu-item" style="float: right;">
         <div v-if="!isAuthenticated">
@@ -38,15 +49,20 @@
           <el-button size="small" @click="signup">注册</el-button>
         </div>
         <div v-if="isAuthenticated">
+          <div class="menu-item" style="padding-right: 45px;">
+            <router-link :to="{ name: 'console' }" class="nav-link" active-class="active">控制台</router-link>
+          </div>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
               {{ currentUser && currentUser.profile ? currentUser.profile.name:""}}
-              <i class="el-icon-arrow-down el-icon--right"></i>
+              <i
+                class="el-icon-arrow-down el-icon--right"
+              ></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
-              <el-dropdown-item>
+              <!-- <el-dropdown-item>
                 <router-link :to="{ name: 'profile'}" class="el-link el-link--default">个人中心</router-link>
-              </el-dropdown-item>
+              </el-dropdown-item>-->
               <el-dropdown-item>
                 <router-link :to="{ name: 'console'}" class="el-link el-link--default">控制台</router-link>
               </el-dropdown-item>
@@ -63,12 +79,13 @@
 import { mapGetters } from "vuex";
 import { LOGOUT } from "@/store/actions.type";
 import { LOGIN_CODE } from "@/store/actions.type";
-import Mgr from '@/common/SecurityService';
+import Mgr from "@/common/SecurityService";
 let mgr = new Mgr();
 
 export default {
   data() {
     return {
+      publicPath: process.env.BASE_URL,
       activeIndex: "1"
     };
   },

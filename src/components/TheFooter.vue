@@ -7,7 +7,7 @@
 
 
 <template>
-  <div class="footer">FastTunnel</div>
+  <div class="footer">© FastTunnel</div>
 </template>
 
 <script>

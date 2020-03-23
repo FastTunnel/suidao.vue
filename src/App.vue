@@ -6,6 +6,7 @@ $ft_height: 90px;
 $gray: #dedede;
 html,
 body,
+.body,
 #app {
   height: 100%;
 }
