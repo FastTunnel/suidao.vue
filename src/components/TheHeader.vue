@@ -28,9 +28,9 @@
   vertical-align: baseline;
 }
 .logo {
-  width: 35px;
-  height: 35px;
-  top: 10px;
+  width: 28px;
+  height: 28px;
+  top: 8px;
   left: -11px;
 }
 </style>
@@ -40,7 +40,7 @@
     <div class="menu">
       <div class="menu-item">
         <router-link :to="{ name: 'home' }" class="nav-link" active-class="active">
-          <el-image class="logo" src="logo.png" fit="fit"></el-image>首页
+          <el-image class="logo" src="logo.png" fit="fit"></el-image>FastTunnel
         </router-link>
       </div>
       <div class="menu-item" style="float: right;">
