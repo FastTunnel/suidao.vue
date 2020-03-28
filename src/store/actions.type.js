@@ -21,3 +21,5 @@ export const LOGIN_CODE = "login_code";
 export const LOGOUT = "logout";
 export const REGISTER = "register";
 export const UPDATE_USER = "updateUser";
+export const ADD_APP = "addApp";
+export const FETCH_TUNNELS = "fetchTunnels";

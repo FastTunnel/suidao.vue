@@ -10,89 +10,72 @@
   margin-top: 20px;
 }
 .el-tabs__header {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .el-aside {
   background-color: rgba(0, 0, 0, 0.04);
 }
+.app-item .box-card {
+  height: 130px;
+  margin: 10px;
+}
+.app-item.add i {
+  line-height: 80px;
+  font-size: 36px;
+  color: rgb(0, 0, 0, 0.3);
+}
+.add .box-card {
+  text-align: center;
+  cursor: pointer;
+}
+.el-menu-vertical-ft {
+  height: 100%;
+}
 </style>
 
 <template>
-    <el-container style="height: 100%;">
-        <!-- <el-aside width="200px"></el-aside> -->
-        <el-main>
-            <el-tabs tab-position="left">
-                <el-tab-pane label="Web穿透">
-                    <div class="app-box">
-                        <el-row :gutter="20">
-                            <el-col :span="6">
-                                <div class="app-item">
-                                    <el-card class="box-card">
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                    </el-card>
-                                </div>
-                            </el-col>
-                            <el-col :span="6">
-                                <div class="app-item">
-                                    <el-card class="box-card">
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                    </el-card>
-                                </div>
-                            </el-col>
-                            <el-col :span="6">
-                                <div class="app-item">
-                                    <el-card class="box-card">
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                    </el-card>
-                                </div>
-                            </el-col>
-                            <el-col :span="6">
-                                <div class="app-item">
-                                    <el-card class="box-card">
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                    </el-card>
-                                </div>
-                            </el-col>
-                            <el-col :span="6">
-                                <div class="app-item">
-                                    <el-card class="box-card">
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                    </el-card>
-                                </div>
-                            </el-col>
-                            <el-col :span="6">
-                                <div class="app-item">
-                                    <el-card class="box-card">
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                        <div class="text item">列表内容</div>
-                                    </el-card>
-                                </div>
-                            </el-col>
-                        </el-row>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="端口转发">端口转发</el-tab-pane>
-            </el-tabs>
-        </el-main>
-    </el-container>
+  <el-container style="height: 100%;">
+    <!-- 侧边栏导航 -->
+    <el-aside width="200px">
+      <el-menu default-active="2" class="el-menu-vertical-ft" router>
+        <el-menu-item :index="item.index" :key="index" v-for="(item, index) in menu">
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{item.title}}</span>
+        </el-menu-item>
+      </el-menu>
+    </el-aside>
+    <!-- 子页面 -->
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
 export default {
   name: "Console",
   data() {
-    return {};
+    return {
+      menu: [
+        {
+          title: "导航1",
+          icon: "el-icon-menu",
+          index: "/console/tunnel"
+        },
+        {
+          title: "导航2",
+          icon: "el-icon-menu",
+          index: "/console/client"
+        }
+      ],
+      lazy: true,
+
+    };
+  },
+  methods: {
+    clickTab(e) {
+      console.log(e);
+    }
   }
 };
 </script>

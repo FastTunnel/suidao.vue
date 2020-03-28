@@ -2,6 +2,7 @@
 .footer {
   padding-top: 20px;
   color: #7b7b7b;
+  text-align: center;
 }
 </style>
 

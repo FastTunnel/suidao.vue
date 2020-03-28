@@ -43,15 +43,38 @@ const routes = [
         component: () => import("@/views/Console"),
         meta: {
             requiresAuth: true
+        },
+        children: [
+            {
+                path: '',
+                name:'console-index',
+                component: () => import("@/views/Console/Index"),
+            },
+            {
+                path: 'tunnel',
+                component: () => import("@/views/Console/Tunnel"),
+            },
+            {
+                path: 'client',
+                component: () => import("@/views/Console/Client"),
+            }
+        ],
+    },
+    {
+        path: '/accessdenied',
+        name: 'accessDenied',
+        component: () => import("@/views/AccessDenied"),
+        meta: {
+            requiresAuth: false
         }
     },
     {
-      path: '/accessdenied',
-      name: 'AccessDenied',
-      component: () => import("@/views/AccessDenied"),
-      meta: {
-        requiresAuth: false
-      }
+        // 会匹配所有路径
+        path: '*',
+        component: () => import("@/views/_404"),
+        meta: {
+            requiresAuth: false
+        }
     }
 ]
 

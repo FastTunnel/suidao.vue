@@ -43,7 +43,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-unused-vars": "warm"
+      "no-unused-vars": "error"
     }
   },
   "browserslist": [

@@ -30,7 +30,18 @@ const ApiService = {
   },
 
   post(resource, params) {
-    return Vue.axios.post(`${resource}`, params);
+    return new Promise((resole, reject) => {
+      Vue.axios.post(`${resource}`, params)
+        .then((res) => {
+          if (res.data.success) {
+            resole(res.data.data);
+          } else {
+            reject(res.data.errorMsg);
+          }
+        }).catch(error => {
+          reject(error);
+        })
+    });
   },
 
   update(resource, slug, params) {

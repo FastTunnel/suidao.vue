@@ -47,6 +47,9 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+router.onError((e) => {
+  console.log(e);
+});
 
 new Vue({
   store,

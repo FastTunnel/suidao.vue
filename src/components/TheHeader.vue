@@ -50,7 +50,7 @@
         </div>
         <div v-if="isAuthenticated">
           <div class="menu-item" style="padding-right: 45px;">
-            <router-link :to="{ name: 'console' }" class="nav-link" active-class="active">控制台</router-link>
+            <router-link :to="{ name: 'console-index' }" class="nav-link" active-class="active">控制台</router-link>
           </div>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
@@ -77,7 +77,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { LOGOUT } from "@/store/actions.type";
+// import { LOGOUT } from "@/store/actions.type";
 import { LOGIN_CODE } from "@/store/actions.type";
 import Mgr from "@/common/SecurityService";
 let mgr = new Mgr();

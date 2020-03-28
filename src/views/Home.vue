@@ -1,6 +1,7 @@
 <style>
 .welcome {
   font-size: 50px;
+  text-align: center;
 }
 </style>
 
@@ -11,11 +12,10 @@
 </template>
 
 <script>
-
 export default {
   name: "home",
   data() {
     return {};
-  },
+  }
 };
 </script>

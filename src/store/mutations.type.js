@@ -12,3 +12,4 @@ export const TAG_ADD = "addTag";
 export const TAG_REMOVE = "removeTag";
 export const UPDATE_ARTICLE_IN_LIST = "updateArticleInList";
 export const RESET_STATE = "resetModuleState";
+export const SET_TUNNELS = "setTunnels"

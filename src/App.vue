@@ -13,24 +13,10 @@ body,
 body {
   margin: 0;
 }
-._hd {
-  height: $hd_height;
-  border-bottom: 1px solid $gray;
-}
-._bd {
-  height: calc(100% - #{$hd_height} - #{$ft_height} - 2px);
-}
-._ft {
-  height: $ft_height;
-  border-top: 1px solid $gray;
-}
+
 #app {
   position: relative;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 </style>
 
