@@ -3,10 +3,13 @@
   padding: 10px 0;
   font-size: 30px;
 }
+.login {
+  text-align: center;
+}
 </style>
 
 <template>
-  <div>
+  <div class="login">
     <div class="title">登录</div>
     <el-form
       :model="ruleForm"

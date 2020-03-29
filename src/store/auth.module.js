@@ -9,20 +9,11 @@ import {
   CHECK_AUTH,
   UPDATE_USER
 } from "./actions.type";
-import Oidc from "oidc-client";
+
+import Mgr from '@/common/SecurityService';
+let mgr = new Mgr();
 
 const ID_USER = "id_user";
-
-var config = {
-  authority: "http://localhost:5000",
-  client_id: "js",
-  redirect_uri: "http://localhost:8080/callback",
-  response_type: "code",
-  scope: "openid profile api1",
-  post_logout_redirect_uri: "http://localhost:8080/"
-};
-
-const mgr = new Oidc.UserManager(config);
 
 const state = {
   errors: null,
@@ -83,7 +74,7 @@ const actions = {
     });
   },
   [LOGIN_CODE]() {
-    mgr.signinRedirect();
+    mgr.signIn();
   },
   [CHECK_AUTH](context) {
     // 检查是否过期
@@ -101,17 +92,12 @@ const actions = {
   [REGISTER](context, credentials) {
     return new Promise((resolve, reject) => {
       ApiService.post("user/sign", credentials)
-        .then(({ data }) => {
-          if (data.success) {
-            resolve(data);
-          } else {
-            context.commit(SET_ERROR, data.errorMsg);
-            reject(data.errorMsg);
-          }
+        .then(res => {
+          resolve(res);
         })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response);
-          reject(response);
+        .catch(err => {
+          context.commit(SET_ERROR, err);
+          reject(err);
         });
     });
   },

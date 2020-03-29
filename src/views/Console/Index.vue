@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "Client",
+  name: "index",
   data() {
     return { error: "" };
   },

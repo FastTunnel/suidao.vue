@@ -7,7 +7,7 @@
 
 <script>
 import Oidc from "oidc-client";
-import { UPDATE_USER } from "@/store/actions.type";
+// import { UPDATE_USER } from "@/store/actions.type";
 
 export default {
   name: "callback",
@@ -15,7 +15,7 @@ export default {
     return { error: "" };
   },
   mounted() {
-    let that = this;
+    // let that = this;
     var mgr = new Oidc.UserManager({
       userStore: new Oidc.WebStorageStateStore(),
       loadUserInfo: true,
@@ -25,7 +25,7 @@ export default {
 
     mgr
       .signinRedirectCallback()
-      .then(function(user) {
+      .then(() => {
         window.location.href = "/";
       })
       .catch(function(err) {

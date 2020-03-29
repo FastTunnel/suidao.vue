@@ -38,6 +38,7 @@ export default {
     return {
       error: "",
       form: {
+        
         name: ""
       },
       dialogFormVisible: false,
@@ -52,6 +53,7 @@ export default {
   methods: {
     handleClick(row) {
       console.log(row);
+      this.dialogFormVisible = true;
     },
     addClient() {
       this.dialogFormVisible = true;

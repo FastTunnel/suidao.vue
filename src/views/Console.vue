@@ -58,6 +58,11 @@ export default {
     return {
       menu: [
         {
+          title: "使用说明",
+          icon: "el-icon-notebook-2",
+          index: "/console/"
+        },
+        {
           title: "应用管理",
           icon: "el-icon-share",
           index: "/console/tunnel"

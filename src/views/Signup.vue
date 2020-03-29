@@ -3,13 +3,13 @@
   padding: 10px 0;
   font-size: 30px;
 }
+.signup {
+  text-align: center;
+}
 </style>
-user_id,
-email,
-pwd,
-sign_time
+ 
 <template>
-  <div>
+  <div class="signup">
     <div class="title">注册</div>
     <el-form
       :model="signForm"
@@ -95,18 +95,14 @@ export default {
       });
     },
     sign() {
+      let that = this;
       this.$store
         .dispatch(REGISTER, this.signForm)
-        .then(() => this.$router.push({ name: "home" }))
+        .then(() => that.$router.push({ name: "home" }))
         .catch(error => {
-          this.$message.error(error);
+          that.$message.error(error);
         });
     }
-  },
-  computed: {
-    ...mapState({
-      errors: state => state.auth.errors
-    })
   }
 };
 </script>
