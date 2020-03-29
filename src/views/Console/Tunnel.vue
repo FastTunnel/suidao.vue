@@ -9,6 +9,11 @@
       <el-table-column prop="local_ip" label="本地ip"></el-table-column>
       <el-table-column prop="local_port" label="本地端口"></el-table-column>
       <el-table-column prop="enabled" label="启用状态"></el-table-column>
+      <el-table-column fixed="right" label="操作" width="100">
+        <template slot-scope="scope">
+          <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <div style="margin-top: 20px">
       <el-button @click="addTunnel()">创建</el-button>
@@ -49,15 +54,16 @@ export default {
   name: "Tunnel",
   data() {
     return {
-      dialogFormVisible: false,
       error: "",
       form: {
+        tunnel_id: "",
         name: "",
         sub_domain: "",
         app_type: 1,
         local_ip: "127.0.0.1",
         local_port: 80
       },
+      dialogFormVisible: false,
       rules: {
         app_type: [
           { required: true, message: "请选择隧道类型", trigger: "blur" }
@@ -80,14 +86,34 @@ export default {
     };
   },
   methods: {
+    handleClick(row) {
+      this.form.tunnel_id = row.tunnel_id;
+      this.form.name = row.name;
+      this.form.sub_domain = row.sub_domain;
+      this.form.local_ip = row.local_ip;
+      this.form.local_port = row.local_port;
+
+      this.dialogFormVisible = true;
+    },
     addTunnel() {
+      this.form.tunnel_id = 0;
+
       this.dialogFormVisible = true;
     },
     submit(formName) {
       let that = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          that.$store.dispatch(ADD_APP, that.form);
+          that.$store
+            .dispatch(ADD_APP, that.form)
+            .then(() => {
+              that.dialogFormVisible = false;
+              that.$message({ message: "创建成功", type: "success" });
+              that.init();
+            })
+            .catch(err => {
+              that.$message.error(err);
+            });
         } else {
           console.log("error submit!!");
           return false;
@@ -98,9 +124,13 @@ export default {
       this.$refs[formName].resetFields();
     },
     init() {
-      this.$store.dispatch(FETCH_TUNNELS, {});
-    },
-    toggleSelection() {}
+      this.$store
+        .dispatch(FETCH_TUNNELS, {})
+        .then(() => {})
+        .catch(err => {
+          this.$message.error(err);
+        });
+    }
   },
   computed: {
     ...mapGetters(["tunnels"])

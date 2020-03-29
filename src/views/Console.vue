@@ -39,7 +39,7 @@
     <el-aside width="200px">
       <el-menu default-active="2" class="el-menu-vertical-ft" router>
         <el-menu-item :index="item.index" :key="index" v-for="(item, index) in menu">
-          <i class="el-icon-menu"></i>
+          <i :class="item.icon"></i>
           <span slot="title">{{item.title}}</span>
         </el-menu-item>
       </el-menu>
@@ -58,18 +58,17 @@ export default {
     return {
       menu: [
         {
-          title: "导航1",
-          icon: "el-icon-menu",
+          title: "应用管理",
+          icon: "el-icon-share",
           index: "/console/tunnel"
         },
         {
-          title: "导航2",
-          icon: "el-icon-menu",
+          title: "客户端管理",
+          icon: "el-icon-monitor",
           index: "/console/client"
         }
       ],
-      lazy: true,
-
+      lazy: true
     };
   },
   methods: {

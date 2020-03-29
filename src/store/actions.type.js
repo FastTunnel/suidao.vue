@@ -23,3 +23,5 @@ export const REGISTER = "register";
 export const UPDATE_USER = "updateUser";
 export const ADD_APP = "addApp";
 export const FETCH_TUNNELS = "fetchTunnels";
+export const FETCH_CLIENTS = "fetchClients";
+export const ADD_CLIENT = "addClient";

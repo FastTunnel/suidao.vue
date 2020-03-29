@@ -23,18 +23,23 @@ const mutations = {
 
 const actions = {
   [ADD_APP](context, param) {
-    ApiService.post("Tunnel/AddTunnel", param).then(res => {
-      console.log(res);
+    return new Promise((resolve, reject) => {
+      ApiService.post("Tunnel/AddTunnel", param).then(res => {
+        resolve(res);
+      }).catch(err => {
+        reject(err);
+      });
     })
   },
   [FETCH_TUNNELS](context, param) {
-    ApiService.post("tunnel/GetTunnels", param).then(res => {
-      state.tunnels = res;
-      context.commit(SET_TUNNELS, res);
-      return;
-    }).catch(error => {
-      return error;
-    });
+    return new Promise((resolve, reject) => {
+      ApiService.post("tunnel/GetTunnels", param).then(res => {
+        context.commit(SET_TUNNELS, res);
+        resolve(res);
+      }).catch(error => {
+        reject(error);
+      });
+    })
   }
 }
 
