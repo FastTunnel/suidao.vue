@@ -39,7 +39,7 @@ const mutations = {
     state.user = user;
     state.errors = {};
 
-    console.log('-- SET_AUTH --', user);
+    // console.log('-- SET_AUTH --', user);
     JwtService.saveToken(state.user.access_token);
     JwtService.saveItem(ID_USER, state.user);
 

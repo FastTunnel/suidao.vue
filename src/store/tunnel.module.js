@@ -1,7 +1,8 @@
 import ApiService from "@/common/api.service";
 import {
   ADD_APP,
-  FETCH_TUNNELS
+  FETCH_TUNNELS,
+  UPDATE_TUNNEL_ENABLED
 } from "./actions.type";
 import { SET_TUNNELS } from "./mutations.type";
 
@@ -22,6 +23,15 @@ const mutations = {
 }
 
 const actions = {
+  [UPDATE_TUNNEL_ENABLED](context, param) {
+    return new Promise((resolve, reject) => {
+      ApiService.post("Tunnel/UpdateEnabled", param).then(res => {
+        resolve(res);
+      }).catch(err => {
+        reject(err);
+      });
+    })
+  },
   [ADD_APP](context, param) {
     return new Promise((resolve, reject) => {
       ApiService.post("Tunnel/AddTunnel", param).then(res => {

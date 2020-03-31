@@ -22,6 +22,10 @@ export const LOGOUT = "logout";
 export const REGISTER = "register";
 export const UPDATE_USER = "updateUser";
 export const ADD_APP = "addApp";
+// tunnel
 export const FETCH_TUNNELS = "fetchTunnels";
 export const FETCH_CLIENTS = "fetchClients";
+export const UPDATE_TUNNEL_ENABLED = "UPDATE_TUNNEL_ENABLED";
+
+// client
 export const ADD_CLIENT = "addClient";

@@ -31,7 +31,6 @@ mgr.events.addAccessTokenExpiring(function () {
 
 mgr.events.addAccessTokenExpired(function () {
   console.log('AccessToken Expired：', arguments);
-  alert('Session expired. Going out!');
   mgr.signoutRedirect().then(function (resp) {
     console.log('signed out', resp);
   }).catch(function (err) {

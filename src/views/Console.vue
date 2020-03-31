@@ -63,15 +63,15 @@ export default {
           index: "/console/"
         },
         {
-          title: "应用管理",
-          icon: "el-icon-share",
-          index: "/console/tunnel"
-        },
-        {
           title: "客户端管理",
           icon: "el-icon-monitor",
           index: "/console/client"
-        }
+        },
+        {
+          title: "隧道管理",
+          icon: "el-icon-share",
+          index: "/console/tunnel"
+        },
       ],
       lazy: true
     };
