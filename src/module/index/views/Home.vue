@@ -1,7 +1,7 @@
 <style>
 .welcome {
   padding-top: 50px;
-  font-size: 50px;
+  font-size: 34px;
   text-align: center;
 }
 </style>

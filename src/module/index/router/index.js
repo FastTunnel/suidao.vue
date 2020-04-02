@@ -10,7 +10,7 @@ const routes = [
         component: () => import("./../views/Home"),
         meta: {
             requiresAuth: false,
-            title: ""
+            title: "免费内网穿透工具"
         }
     },
     {

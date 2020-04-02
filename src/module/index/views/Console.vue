@@ -1,7 +1,4 @@
 <style>
-.welcome {
-  font-size: 50px;
-}
 .app-box {
 }
 .app-item {
