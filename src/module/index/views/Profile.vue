@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { FETCH_PROFILE } from "@/store/actions.type";
+import { FETCH_PROFILE } from "@/module/index/store/actions.type";
 
 import { mapGetters } from "vuex";
 export default {

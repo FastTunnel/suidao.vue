@@ -38,7 +38,7 @@
 <script>
 import { mapState } from "vuex";
 import checks from "@/utils/checks.js";
-import { REGISTER } from "@/store/actions.type";
+import { REGISTER } from "@/module/index/store/actions.type";
 
 export default {
   data() {

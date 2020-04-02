@@ -77,8 +77,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-// import { LOGOUT } from "@/store/actions.type";
-import { LOGIN_CODE } from "@/store/actions.type";
+import { LOGIN_CODE } from "@/module/index/store/actions.type";
 import Mgr from "@/common/SecurityService";
 let mgr = new Mgr();
 

@@ -75,7 +75,7 @@ import {
   FETCH_TUNNELS,
   FETCH_CLIENTS,
   UPDATE_TUNNEL_ENABLED
-} from "@/store/actions.type";
+} from "@/module/index/store/actions.type";
 export default {
   name: "Tunnel",
   data() {

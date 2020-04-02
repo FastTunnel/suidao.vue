@@ -7,7 +7,7 @@ const routes = [
     {
         path: "/",
         name: "home",
-        component: () => import("@/views/Home"),
+        component: () => import("./../views/Home"),
         meta: {
             requiresAuth: false,
             title: ""
@@ -16,7 +16,7 @@ const routes = [
     {
         path: "/callback",
         name: "callback",
-        component: () => import("@/views/Callback"),
+        component: () => import("./../views/Callback"),
         meta: {
             requiresAuth: false,
             title: "登陆中"
@@ -25,17 +25,17 @@ const routes = [
     {
         path: "/silent",
         name: "silent",
-        component: () => import("@/views/Silent"),
+        component: () => import("./../views/Silent"),
     },
     {
         path: "/login",
         name: "login",
-        component: () => import("@/views/Login"),
+        component: () => import("./../views/Login"),
     },
     {
         path: "/signup",
         name: "signup",
-        component: () => import("@/views/Signup"),
+        component: () => import("./../views/Signup"),
         meta: {
             requiresAuth: false,
             title: "注册"
@@ -44,7 +44,7 @@ const routes = [
     {
         path: "/profile",
         name: "profile",
-        component: () => import("@/views/Profile"),
+        component: () => import("./../views/Profile"),
         meta: {
             requiresAuth: true,
             title: "个人信息"
@@ -53,7 +53,7 @@ const routes = [
     {
         path: "/console",
         name: "console",
-        component: () => import("@/views/Console"),
+        component: () => import("./../views/Console"),
         meta: {
             requiresAuth: true,
             title: "控制台"
@@ -62,7 +62,7 @@ const routes = [
             {
                 path: '',
                 name: 'console-index',
-                component: () => import("@/views/Console/Index"),
+                component: () => import("./../views/Console/Index"),
                 meta: {
                     requiresAuth: true,
                     title: "使用说明"
@@ -70,7 +70,7 @@ const routes = [
             },
             {
                 path: 'tunnel',
-                component: () => import("@/views/Console/Tunnel"),
+                component: () => import("./../views/Console/Tunnel"),
                 meta: {
                     requiresAuth: true,
                     title: "隧道管理"
@@ -78,7 +78,7 @@ const routes = [
             },
             {
                 path: 'client',
-                component: () => import("@/views/Console/Client"),
+                component: () => import("./../views/Console/Client"),
                 meta: {
                     requiresAuth: true,
                     title: "客户端管理"
@@ -86,7 +86,7 @@ const routes = [
             },
             {
                 path: 'download',
-                component: () => import("@/views/Console/Download"),
+                component: () => import("./../views/Console/Download"),
                 meta: {
                     requiresAuth: true,
                     title: "下载客户端"
@@ -97,7 +97,7 @@ const routes = [
     {
         path: '/accessdenied',
         name: 'accessDenied',
-        component: () => import("@/views/AccessDenied"),
+        component: () => import("./../views/AccessDenied"),
         meta: {
             requiresAuth: false
         }
@@ -105,7 +105,7 @@ const routes = [
     {
         // 会匹配所有路径
         path: '*',
-        component: () => import("@/views/_404"),
+        component: () => import("./../views/_404"),
         meta: {
             requiresAuth: false,
             title: "未找到页面"

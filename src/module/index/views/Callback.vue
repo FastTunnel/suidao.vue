@@ -7,7 +7,6 @@
 
 <script>
 import Oidc from "oidc-client";
-// import { UPDATE_USER } from "@/store/actions.type";
 
 export default {
   name: "callback",
