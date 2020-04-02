@@ -1,5 +1,6 @@
 <style>
 .welcome {
+  padding-top: 200px;
   font-size: 50px;
   text-align: center;
 }
@@ -7,7 +8,7 @@
 
 <template>
   <div>
-    <div class="welcome">Welcome To FastTunnel</div>
+    <div class="welcome">Welcome To FastTunnel (^_^)</div>
   </div>
 </template>
 

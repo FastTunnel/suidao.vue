@@ -70,12 +70,18 @@ export default {
         if (valid) {
           that.$store
             .dispatch(ADD_CLIENT, that.form)
-            .then(() => {
-              that.dialogFormVisible = false;
-              that.$message({ message: "操作成功", type: "success" });
-              that.initData();
-            })
+            .then(
+              () => {
+                that.dialogFormVisible = false;
+                that.$message({ message: "操作成功", type: "success" });
+                that.initData();
+              },
+              err => {
+                that.$message.error(err);
+              }
+            )
             .catch(err => {
+              console.log("client", err);
               that.$message.error(err);
             });
         } else {

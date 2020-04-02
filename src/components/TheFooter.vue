@@ -8,7 +8,9 @@
 
 
 <template>
-  <div class="footer">© FastTunnel</div>
+  <div class="footer">
+    <a href="https://github.com/SpringHgui/FastTunnel" target="_blank">© Power By FastTunnel</a>
+  </div>
 </template>
 
 <script>

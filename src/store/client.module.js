@@ -37,10 +37,10 @@ const actions = {
       ApiService.post("Client/GetClients", param).then(res => {
         context.commit(SET_CLIENTS, res);
         resolve(res);
-      }).catch(error => {
-        reject(error);
+      }).catch(err => {
+        reject(err);
       });
-    });
+    })
   }
 }
 

@@ -39,7 +39,8 @@ const ApiService = {
             reject(res.data.errorMsg);
           }
         }).catch(error => {
-          reject(error);
+          console.log('axios', error);
+          reject('网络异常请稍后重试！');
         })
     });
   },
