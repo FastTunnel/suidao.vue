@@ -3,6 +3,7 @@
 
 <template>
   <div class="container-xl">
+    <div class="title">隧道管理</div>
     <el-table :data="tunnels">
       <el-table-column prop="name" label="名称"></el-table-column>
       <el-table-column prop="sub_domain" label="子域名"></el-table-column>
@@ -49,16 +50,29 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="隧道名称" prop="name">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.name" autocomplete="off" placeholder="用于用户区分隧道 如：测试、生产、xx站点"></el-input>
         </el-form-item>
         <el-form-item label="子域名" prop="sub_domain">
-          <el-input v-model="form.sub_domain" autocomplete="off"></el-input>
+          <el-input
+            v-model="form.sub_domain"
+            autocomplete="off"
+            placeholder="自定义域名前缀 如：dev_test-1、test-1"
+          ></el-input>
         </el-form-item>
         <el-form-item label="本地IP" prop="local_ip">
-          <el-input v-model="form.local_ip" autocomplete="off"></el-input>
+          <el-input
+            v-model="form.local_ip"
+            autocomplete="off"
+            placeholder="被穿透的服务所在内网ip地址 默认值：127.0.0.1"
+          ></el-input>
         </el-form-item>
         <el-form-item label="本地端口" prop="local_port">
-          <el-input type="number" v-model="form.local_port" autocomplete="off"></el-input>
+          <el-input
+            type="number"
+            v-model="form.local_port"
+            autocomplete="off"
+            placeholder="被穿透的服务提供服务的端口号 默认值值：80"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -76,6 +90,8 @@ import {
   FETCH_CLIENTS,
   UPDATE_TUNNEL_ENABLED
 } from "@/module/index/store/actions.type";
+import { validateIP, validatePort, validateSubDomian } from "@/utils/validator";
+
 export default {
   name: "Tunnel",
   data() {
@@ -115,14 +131,14 @@ export default {
           { min: 1, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
         ],
         sub_domain: [
-          { required: true, message: "请输入子域名", trigger: "blur" },
+          { validator: validateSubDomian, trigger: "blur" },
           { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" }
         ],
         local_ip: [
-          { required: true, message: "请输入本地IP", trigger: "blur" }
+          { validator: validateIP, trigger: "blur" }
         ],
         local_port: [
-          { required: true, message: "请输入本地端口", trigger: "blur" }
+          { validator: validatePort, trigger: "blur" }
         ]
       }
     };
@@ -143,7 +159,7 @@ export default {
         });
     },
     handleClick(row) {
-      this.editName = "修改应用";
+      this.editName = "修改隧道";
       this.form.tunnel_id = row.tunnel_id;
       this.form.name = row.name;
       this.form.sub_domain = row.sub_domain;
@@ -154,7 +170,7 @@ export default {
       this.dialogFormVisible = true;
     },
     addTunnel(formName) {
-      this.editName = "创建应用";
+      this.editName = "创建隧道";
       this.form.tunnel_id = 0;
       this.form.name = "";
       this.form.sub_domain = "";

@@ -37,18 +37,11 @@
 
 <script>
 import { mapState } from "vuex";
-import checks from "@/utils/checks.js";
 import { REGISTER } from "@/module/index/store/actions.type";
+import { validateEmail } from "@/utils/validator";
 
 export default {
   data() {
-    var checkEmail = (rule, value, callback) => {
-      if (checks.check_email(value)) {
-        callback();
-      } else {
-        callback(new Error("请输入正确的邮箱"));
-      }
-    };
     var validatePass = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请输入密码"));
@@ -78,7 +71,7 @@ export default {
       rules: {
         pwd: [{ validator: validatePass, trigger: "blur" }],
         check_pwd: [{ validator: validatePass2, trigger: "blur" }],
-        email: [{ validator: checkEmail, trigger: "blur" }]
+        email: [{ validator: validateEmail, trigger: "blur" }]
       }
     };
   },

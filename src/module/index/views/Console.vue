@@ -28,6 +28,10 @@
 .el-menu-vertical-ft {
   height: 100%;
 }
+.title {
+  padding-bottom: 20px;
+  font-size: 25px;
+}
 </style>
 
 <template>

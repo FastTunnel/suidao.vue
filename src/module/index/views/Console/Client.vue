@@ -3,6 +3,7 @@
 
 <template>
   <div class="container-xl">
+    <div class="title">客户端管理</div>
     <el-table :data="clients" style="width: 100%">
       <el-table-column prop="client_name" label="名称"></el-table-column>
       <el-table-column prop="client_key" label="登录密钥"></el-table-column>
@@ -20,7 +21,7 @@
     <el-dialog :title="editName" :visible.sync="dialogFormVisible">
       <el-form :model="form" label-width="120px" :rules="rules" ref="ruleForm">
         <el-form-item label="客户端名称" prop="name">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.name" autocomplete="off" placeholder="如：家、公司等，一个客户端可配置多个隧道"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

@@ -2,10 +2,7 @@
 .line {
   line-height: 50px;
 }
-.title {
-  padding-bottom: 20px;
-  font-size: 25px;
-}
+
 .link {
   color: red;
 }
