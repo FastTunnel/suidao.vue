@@ -22,7 +22,7 @@
   <div class="container-xl">
     <div class="title">请根据您的PC版本下载对应的客户端</div>
     <div>
-      <a href="https://github.com/SpringHgui/FastTunnel/releases" target="_blank">去Gitbhu下载最新客户端</a>
+      <a href="https://github.com/SpringHgui/FastTunnel/releases" target="_blank">去Gitbhu下载</a>
     </div>
     
     <div class="down-box">
