@@ -131,14 +131,12 @@ export default {
           { min: 1, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
         ],
         sub_domain: [
-          { validator: validateSubDomian, trigger: "blur" },
+          { required: true, validator: validateSubDomian, trigger: "blur" },
           { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" }
         ],
-        local_ip: [
-          { validator: validateIP, trigger: "blur" }
-        ],
+        local_ip: [{ required: true, validator: validateIP, trigger: "blur" }],
         local_port: [
-          { validator: validatePort, trigger: "blur" }
+          { required: true, validator: validatePort, trigger: "blur" }
         ]
       }
     };
