@@ -21,15 +21,15 @@
       <div class="line">3.
         <router-link class="link" to="/console/download">下载客户端软件</router-link>
       </div>
+      <div class="line">4.被穿透方启动客户端软件, 并使用`登录密钥`进行登录, 客户端需一直保持运行状态。</div>
       <div class="line">
-        4.
+        提示.
         <a
           class="link"
-          href="https://dotnet.microsoft.com/download/dotnet-core/3.1"
+          href="https://github.com/SpringHgui/FastTunnel/blob/master/README.md#%E5%90%84%E7%A7%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E4%BB%A5fasttunnelclient%E4%B8%BA%E4%BE%8B"
           target="_blank"
-        >安装 .NET Core Runtime 3.1</a>
+        >查看Mac和Linux如何运行</a>
       </div>
-      <div class="line">5.被穿透方启动客户端软件, 并使用`登录密钥`进行登录, 客户端需一直保持运行状态。</div>
       <div class="line">
         <div style="font-size: 19px;color:red;">特别提醒：本软件目前处于开发阶段，版本迭代频繁，如遇客户端启动异常，请在下载页面下载最新的客户端重试。</div>
       </div>
