@@ -8,9 +8,8 @@
 
 <template>
   <div>
-    <div class="welcome">Welcome To FastTunnel (^_^)</div>
-
-    <div class="welcome">免费内网穿透工具</div>
+    <div class="welcome">Welcome to FastTunnel！</div>
+    <div class="welcome">为您提供免费内网穿透服务</div>
   </div>
 </template>
 
