@@ -5,57 +5,11 @@ Vue.use(Router);
 
 const routes = [
     {
-        path: "/",
-        name: "home",
-        component: () => import("./../views/Home"),
-        meta: {
-            requiresAuth: false,
-            title: "免费内网穿透工具"
-        }
-    },
-    {
-        path: "/callback",
-        name: "callback",
-        component: () => import("./../views/Callback"),
-        meta: {
-            requiresAuth: false,
-            title: "登陆中"
-        }
-    },
-    {
-        path: "/silent",
-        name: "silent",
-        component: () => import("./../views/Silent"),
-    },
-    {
-        path: "/login",
-        name: "login",
-        component: () => import("./../views/Login"),
-    },
-    {
-        path: "/signup",
-        name: "signup",
-        component: () => import("./../views/Signup"),
-        meta: {
-            requiresAuth: false,
-            title: "注册"
-        }
-    },
-    {
-        path: "/profile",
-        name: "profile",
-        component: () => import("./../views/Profile"),
-        meta: {
-            requiresAuth: true,
-            title: "个人信息"
-        }
-    },
-    {
         path: "/console",
         name: "console",
         component: () => import("./../views/Console"),
         meta: {
-            requiresAuth: true,
+            requiresAuth: false,
             title: "控制台"
         },
         children: [
@@ -109,6 +63,21 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: "未找到页面"
+        }
+    },
+    {
+        path: "/silent",
+        name: "silent",
+        component: () => import("./../views/Silent"),
+    },
+
+    {
+        path: "/profile",
+        name: "profile",
+        component: () => import("./../views/Profile"),
+        meta: {
+            requiresAuth: true,
+            title: "个人信息"
         }
     }
 ]

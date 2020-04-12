@@ -39,9 +39,9 @@
   <div class="container-xl">
     <div class="menu">
       <div class="menu-item">
-        <router-link :to="{ name: 'home' }" class="nav-link" active-class="active">
+        <a href="/#/" class="nav-link router-link-exact-active active">
           <el-image class="logo" src="/logo.png" fit="fit"></el-image>FastTunnel
-        </router-link>
+        </a>
       </div>
       <div class="menu-item" style="float: right;">
         <div v-if="!isAuthenticated">
@@ -50,7 +50,8 @@
         </div>
         <div v-if="isAuthenticated">
           <div class="menu-item" style="padding-right: 45px;">
-            <router-link :to="{ name: 'console-index' }" class="nav-link" active-class="active">控制台</router-link>
+            <a href="/console.html#/console" class="nav-link router-link-exact-active active">控制台</a>
+            <!-- <router-link to="console.html" class="nav-link" active-class="active">控制台</router-link> -->
           </div>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">

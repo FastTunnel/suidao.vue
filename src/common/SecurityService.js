@@ -6,11 +6,11 @@ var mgr = new Oidc.UserManager({
   userStore: new Oidc.WebStorageStateStore(),
   authority: process.env.VUE_APP_AUTH,
   client_id: process.env.VUE_APP_AUTH_CLIENT,
-  redirect_uri: window.location.origin + '/callback',
+  redirect_uri: window.location.origin + '/callback.html',
   response_type: 'code', // id_token token
   scope: 'openid profile api1', //  address roles identityserver4api country subscriptionlevel offline_access
   post_logout_redirect_uri: window.location.origin + '/',
-  silent_redirect_uri: window.location.origin + '/silent',
+  silent_redirect_uri: window.location.origin + '/silent.html',
   accessTokenExpiringNotificationTime: 10,
   automaticSilentRenew: true,
   filterProtocolClaims: true,
