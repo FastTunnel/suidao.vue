@@ -61,17 +61,17 @@ export default {
         {
           title: "使用说明",
           icon: "el-icon-notebook-2",
-          index: "/console/"
+          index: "/"
         },
         {
           title: "客户端管理",
           icon: "el-icon-monitor",
-          index: "/console/client"
+          index: "/client"
         },
         {
           title: "隧道管理",
           icon: "el-icon-share",
-          index: "/console/tunnel"
+          index: "/tunnel"
         },
       ],
       lazy: true

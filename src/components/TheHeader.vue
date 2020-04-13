@@ -50,7 +50,7 @@
         </div>
         <div v-if="isAuthenticated">
           <div class="menu-item" style="padding-right: 45px;">
-            <a href="/console.html#/console" class="nav-link router-link-exact-active active">控制台</a>
+            <a href="/console.html#/" class="nav-link router-link-exact-active active">控制台</a>
             <!-- <router-link to="console.html" class="nav-link" active-class="active">控制台</router-link> -->
           </div>
           <el-dropdown :hide-on-click="false">
@@ -64,9 +64,6 @@
               <!-- <el-dropdown-item>
                 <router-link :to="{ name: 'profile'}" class="el-link el-link--default">个人中心</router-link>
               </el-dropdown-item>-->
-              <el-dropdown-item>
-                <router-link :to="{ name: 'console'}" class="el-link el-link--default">控制台</router-link>
-              </el-dropdown-item>
               <el-dropdown-item @click.native="logOut" divided>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>

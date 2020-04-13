@@ -5,7 +5,7 @@ Vue.use(Router);
 
 const routes = [
     {
-        path: "/console",
+        path: "/",
         name: "console",
         component: () => import("./../views/Console"),
         meta: {

@@ -12,15 +12,15 @@ module.exports = {
             title: 'FastTunnel 控制台',
             chunks: ['chunk-vendors', 'chunk-common', 'console']
         },
-        callback: {
-            entry: 'src/module/callback/main.js',
-            title: '登录中...',
-            chunks: ['chunk-vendors', 'chunk-common', 'callback']
-        },
-        silent: {
-            entry: 'src/module/silent/main.js',
-            title: '登录中...',
-            chunks: ['chunk-vendors', 'chunk-common', 'silent']
-        },
+        // callback: {
+        //     entry: 'src/module/callback/main.js',
+        //     title: '登录中...',
+        //     chunks: ['chunk-vendors', 'chunk-common', 'callback']
+        // },
+        // silent: {
+        //     entry: 'src/module/silent/main.js',
+        //     title: '登录中...',
+        //     chunks: ['chunk-vendors', 'chunk-common', 'silent']
+        // },
     }
 }
