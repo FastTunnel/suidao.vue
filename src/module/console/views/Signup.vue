@@ -37,7 +37,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { REGISTER } from "@/module/index/store/actions.type";
+import { REGISTER } from "@/store/actions.type";
 import { validateEmail } from "@/utils/validator";
 
 export default {

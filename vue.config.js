@@ -11,16 +11,15 @@ module.exports = {
             entry: 'src/module/console/main.js',
             title: 'FastTunnel 控制台',
             chunks: ['chunk-vendors', 'chunk-common', 'console']
-        },
-        // callback: {
-        //     entry: 'src/module/callback/main.js',
-        //     title: '登录中...',
-        //     chunks: ['chunk-vendors', 'chunk-common', 'callback']
-        // },
-        // silent: {
-        //     entry: 'src/module/silent/main.js',
-        //     title: '登录中...',
-        //     chunks: ['chunk-vendors', 'chunk-common', 'silent']
-        // },
+        }
+    },
+    configureWebpack: {
+        externals: {
+            'vue': 'Vue',
+            'vue-router': 'VueRouter',
+            'vuex': 'Vuex',
+            'axios': 'axios',
+            'element-ui': 'ELEMENT'
+        }
     }
 }

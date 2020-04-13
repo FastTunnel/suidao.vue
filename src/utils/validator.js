@@ -23,6 +23,14 @@ export const validatePort = (rule, value, callback) => {
     }
 }
 
+export const validateRemotPort = (rule, value, callback) => {
+    if (value <= 50000 && value >= 10000) {
+        callback();
+    } else {
+        callback(new Error("端口号范围为10000~50000"));
+    }
+}
+
 export const validateSubDomian = (rule, value, callback) => {
     if (/[a-z0-9_-]+/.test(value)) {
         callback();

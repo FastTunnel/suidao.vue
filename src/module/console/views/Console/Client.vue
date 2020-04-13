@@ -33,7 +33,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { ADD_CLIENT, FETCH_CLIENTS } from "@/module/index/store/actions.type";
+import { ADD_CLIENT, FETCH_CLIENTS } from "@/store/actions.type";
 export default {
   name: "Client",
   data() {

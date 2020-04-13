@@ -61,9 +61,9 @@
               ></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
-              <!-- <el-dropdown-item>
+              <el-dropdown-item>
                 <router-link :to="{ name: 'profile'}" class="el-link el-link--default">个人中心</router-link>
-              </el-dropdown-item>-->
+              </el-dropdown-item>
               <el-dropdown-item @click.native="logOut" divided>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -75,7 +75,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { LOGIN_CODE } from "@/module/index/store/actions.type";
+import { LOGIN_CODE } from "@/store/actions.type";
 import Mgr from "@/common/SecurityService";
 let mgr = new Mgr();
 

@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from "./router";
 import ElementUI from 'element-ui';
-import store from "./store";
+import store from "@/store";
 import ApiService from "../../common/api.service";
-import { UPDATE_USER, LOGOUT } from "./store/actions.type";
+import { UPDATE_USER, LOGOUT } from "@/store/actions.type";
 
 import '@/assets/scss/element-variables.scss'
 import '@/assets/scss/main.scss'

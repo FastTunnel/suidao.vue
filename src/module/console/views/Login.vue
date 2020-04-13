@@ -35,7 +35,7 @@
 <script>
 import { mapState } from "vuex";
 import { validateEmail } from "@/utils/validator";
-import { LOGIN } from "@/module/index/store/actions.type";
+import { LOGIN } from "@/store/actions.type";
 
 export default {
   data() {

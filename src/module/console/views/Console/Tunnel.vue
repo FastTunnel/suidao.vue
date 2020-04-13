@@ -31,7 +31,7 @@
     </div>
     <!-- Form -->
     <el-dialog :title="editName" :visible.sync="dialogFormVisible">
-      <el-form :model="form" label-width="80px" :rules="rules" ref="ruleForm">
+      <el-form :model="form" label-width="120px" :rules="rules" ref="ruleForm">
         <el-form-item label="客户端" prop="client_id">
           <el-select v-model="form.client_id" placeholder="请选择自定义客户端">
             <el-option :label="unselect.label" :value="unselect.val"></el-option>
@@ -46,33 +46,47 @@
         <el-form-item label="隧道类型" prop="app_type">
           <el-radio-group v-model="form.app_type">
             <el-radio :label="1">Web穿透</el-radio>
-            <el-radio :label="2" disabled>SSH/远程桌面</el-radio>
+            <el-radio :label="2">SSH/远程桌面/端口转发</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="隧道名称" prop="name">
           <el-input v-model="form.name" autocomplete="off" placeholder="用于用户区分隧道 如：测试、生产、xx站点"></el-input>
         </el-form-item>
-        <el-form-item label="子域名" prop="sub_domain">
+        <el-form-item label="web子域名" prop="sub_domain" v-show="form.app_type == 1">
           <el-input
             v-model="form.sub_domain"
             autocomplete="off"
             placeholder="自定义域名前缀 如：dev_test-1、test-1"
           ></el-input>
         </el-form-item>
-        <el-form-item label="本地IP" prop="local_ip">
+        <el-form-item label="服务器端口号" prop="remote_port" v-show="form.app_type == 2">
+          <el-input
+            v-model="form.remote_port"
+            autocomplete="off"
+            placeholder="服务器端口号：本端口的请求可被转发至内网服务"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="内网服务IP" prop="local_ip">
           <el-input
             v-model="form.local_ip"
             autocomplete="off"
             placeholder="被穿透的服务所在内网ip地址 默认值：127.0.0.1"
           ></el-input>
         </el-form-item>
-        <el-form-item label="本地端口" prop="local_port">
+        <el-form-item label="内网服务端口" prop="local_port">
           <el-input
             type="number"
             v-model="form.local_port"
             autocomplete="off"
             placeholder="被穿透的服务提供服务的端口号 默认值值：80"
           ></el-input>
+        </el-form-item>
+        <el-form-item label="" prop="local_port" v-show="form.app_type == 2">
+          <el-row>
+            <el-button size="mini" type="success" @click="setPort('3389')">3389 (windows远程)</el-button>
+            <el-button size="mini" type="warning" @click="setPort('22')">22 (linux远程)</el-button>
+            <el-button size="mini" type="danger" @click="setPort('3306')">3306 (mysql)</el-button>
+          </el-row>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -89,8 +103,13 @@ import {
   FETCH_TUNNELS,
   FETCH_CLIENTS,
   UPDATE_TUNNEL_ENABLED
-} from "@/module/index/store/actions.type";
-import { validateIP, validatePort, validateSubDomian } from "@/utils/validator";
+} from "@/store/actions.type";
+import {
+  validateIP,
+  validatePort,
+  validateSubDomian,
+  validateRemotPort
+} from "@/utils/validator";
 
 export default {
   name: "Tunnel",
@@ -100,6 +119,7 @@ export default {
       error: "",
       editName: "",
       form: {
+        remote_port: "",
         tunnel_id: "",
         name: "",
         sub_domain: "",
@@ -131,8 +151,35 @@ export default {
           { min: 1, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
         ],
         sub_domain: [
-          { required: true, validator: validateSubDomian, trigger: "blur" },
+          {
+            required: () => {
+              return this.form.app_type == 1;
+            },
+            validator: (rule, value, callback) => {
+              if (this.form.app_type == 1) {
+                validateSubDomian(rule, value, callback);
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          },
           { min: 1, max: 10, message: "长度在 1 到 10 个字符", trigger: "blur" }
+        ],
+        remote_port: [
+          {
+            required: () => {
+              return this.form.app_type == 2;
+            },
+            validator: (rule, value, callback) => {
+              if (this.form.app_type == 2) {
+                validateRemotPort(rule, value, callback);
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
         ],
         local_ip: [{ required: true, validator: validateIP, trigger: "blur" }],
         local_port: [
@@ -142,6 +189,9 @@ export default {
     };
   },
   methods: {
+    setPort(port) {
+      this.form.local_port = port;
+    },
     changeEnable(value, row) {
       let that = this;
       this.$store

@@ -1,12 +1,15 @@
 <style>
+.info {
+  text-align: center;
+}
 </style>
 
 <template>
-  <div>{{currentUser.profile.name}}</div>
+  <div class="info">当前功能正在开发中...</div>
 </template>
 
 <script>
-import { FETCH_PROFILE } from "@/module/index/store/actions.type";
+import { FETCH_PROFILE } from "@/store/actions.type";
 
 import { mapGetters } from "vuex";
 export default {
@@ -17,11 +20,6 @@ export default {
   computed: {
     ...mapGetters(["currentUser", "profile", "isAuthenticated"])
   },
-  // watch: {
-  //   $route(to) {
-  //     this.$store.dispatch(FETCH_PROFILE, to.params);
-  //   }
-  // },
   mounted() {
     console.log("FETCH_PROFILE");
     this.$store.dispatch(FETCH_PROFILE);

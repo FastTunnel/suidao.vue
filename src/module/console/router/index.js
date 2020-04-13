@@ -9,7 +9,7 @@ const routes = [
         name: "console",
         component: () => import("./../views/Console"),
         meta: {
-            requiresAuth: false,
+            requiresAuth: true,
             title: "控制台"
         },
         children: [
@@ -47,6 +47,13 @@ const routes = [
                 }
             }
         ],
+    }, {
+        path: '/profile',
+        name: 'profile',
+        component: () => import("./../views/Profile"),
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/accessdenied',
@@ -63,21 +70,6 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: "未找到页面"
-        }
-    },
-    {
-        path: "/silent",
-        name: "silent",
-        component: () => import("./../views/Silent"),
-    },
-
-    {
-        path: "/profile",
-        name: "profile",
-        component: () => import("./../views/Profile"),
-        meta: {
-            requiresAuth: true,
-            title: "个人信息"
         }
     }
 ]
