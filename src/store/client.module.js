@@ -22,19 +22,19 @@ const mutations = {
 }
 
 const actions = {
-  [ADD_CLIENT](context, param) {
-    return new Promise((resolve, reject) => {
-      ApiService.post("Client/AddClient", param).then(
-        res => {
-          resolve(res);
-        }).catch(err => {
-          reject(err);
-        });
-    })
-  },
+  // [ADD_CLIENT](context, param) {
+  //   return new Promise((resolve, reject) => {
+  //     ApiService.post("Client/AddClient", param).then(
+  //       res => {
+  //         resolve(res);
+  //       }).catch(err => {
+  //         reject(err);
+  //       });
+  //   })
+  // },
   [FETCH_CLIENTS](context, param) {
     return new Promise((resolve, reject) => {
-      ApiService.post("Client/GetClients", param).then(res => {
+      ApiService.post("Server/GetServers", param).then(res => {
         context.commit(SET_CLIENTS, res);
         resolve(res);
       }).catch(err => {

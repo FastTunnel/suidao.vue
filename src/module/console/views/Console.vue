@@ -64,15 +64,15 @@ export default {
           index: "/"
         },
         {
-          title: "客户端管理",
-          icon: "el-icon-monitor",
-          index: "/client"
-        },
-        {
           title: "隧道管理",
           icon: "el-icon-share",
           index: "/tunnel"
         },
+        {
+          title: "客户端下载",
+          icon: "el-icon-download",
+          index: "/download"
+        }
       ],
       lazy: true
     };

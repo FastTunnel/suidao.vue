@@ -5,11 +5,22 @@
 </style>
 
 <template>
-  <div class="info">当前功能正在开发中...</div>
+  <div class="info">
+    <el-main class="container-lg">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>AccessKey</span>
+          <el-button style="float: right; padding: 3px 0" type="text" @click="resetKey">重置</el-button>
+        </div>
+        <div class="text item">{{profile.access_key =='' ? '未生成,请重置' :profile.access_key}}</div>
+        <div class="text item" style="padding-top:1em;color:#999;">请妥善保管您的AccessKey</div>
+      </el-card>
+    </el-main>
+  </div>
 </template>
 
 <script>
-import { FETCH_PROFILE } from "@/store/actions.type";
+import { FETCH_PROFILE, RESET_ACCESS } from "@/store/actions.type";
 
 import { mapGetters } from "vuex";
 export default {
@@ -17,11 +28,15 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    resetKey() {
+      this.$store.dispatch(RESET_ACCESS);
+    }
+  },
   computed: {
-    ...mapGetters(["currentUser", "profile", "isAuthenticated"])
+    ...mapGetters(["profile", "isAuthenticated"])
   },
   mounted() {
-    console.log("FETCH_PROFILE");
     this.$store.dispatch(FETCH_PROFILE);
   }
 };

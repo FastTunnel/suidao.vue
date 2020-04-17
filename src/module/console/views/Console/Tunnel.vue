@@ -6,10 +6,13 @@
     <div class="title">隧道管理</div>
     <el-table :data="tunnels">
       <el-table-column prop="name" label="名称"></el-table-column>
+      <el-table-column prop="type_name" label="隧道类型"></el-table-column>
       <el-table-column prop="sub_domain" label="子域名"></el-table-column>
+      <el-table-column prop="remote_port" label="映射端口"></el-table-column>
       <el-table-column prop="local_ip" label="本地ip"></el-table-column>
       <el-table-column prop="local_port" label="本地端口"></el-table-column>
-      <el-table-column prop="client_name" label="客户端"></el-table-column>
+      <el-table-column prop="addr" label="访问地址" width="240"></el-table-column>
+      <!-- <el-table-column prop="server_name" label="服务器"></el-table-column> -->
       <el-table-column prop="enabled" label="启用状态">
         <template slot-scope="scope">
           <el-switch
@@ -32,19 +35,20 @@
     <!-- Form -->
     <el-dialog :title="editName" :visible.sync="dialogFormVisible">
       <el-form :model="form" label-width="120px" :rules="rules" ref="ruleForm">
-        <el-form-item label="客户端" prop="client_id">
-          <el-select v-model="form.client_id" placeholder="请选择自定义客户端">
+        <el-form-item label="服务器" prop="server_id">
+          <el-select v-model="form.server_id" placeholder="请选择服务器">
             <el-option :label="unselect.label" :value="unselect.val"></el-option>
             <el-option
-              :label="item.client_name"
-              :value="item.client_id"
-              :key="item.client_id"
+              :label="item.server_name"
+              :value="item.server_id"
+              :key="item.server_id"
+              :disabled="!item.enabled"
               v-for="(item) in clients"
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="隧道类型" prop="app_type">
-          <el-radio-group v-model="form.app_type">
+        <el-form-item label="隧道类型" prop="tunnel_type">
+          <el-radio-group v-model="form.tunnel_type">
             <el-radio :label="1">Web穿透</el-radio>
             <el-radio :label="2">SSH/远程桌面/端口转发</el-radio>
           </el-radio-group>
@@ -52,18 +56,18 @@
         <el-form-item label="隧道名称" prop="name">
           <el-input v-model="form.name" autocomplete="off" placeholder="用于用户区分隧道 如：测试、生产、xx站点"></el-input>
         </el-form-item>
-        <el-form-item label="web子域名" prop="sub_domain" v-show="form.app_type == 1">
+        <el-form-item label="web子域名" prop="sub_domain" v-show="form.tunnel_type == 1">
           <el-input
             v-model="form.sub_domain"
             autocomplete="off"
             placeholder="自定义域名前缀 如：dev_test-1、test-1"
           ></el-input>
         </el-form-item>
-        <el-form-item label="服务器端口号" prop="remote_port" v-show="form.app_type == 2">
+        <el-form-item label="映射端口" prop="remote_port" v-show="form.tunnel_type == 2">
           <el-input
             v-model="form.remote_port"
             autocomplete="off"
-            placeholder="服务器端口号：本端口的请求可被转发至内网服务"
+            placeholder="映射端口：内网端口号映射至服务器的此端口"
           ></el-input>
         </el-form-item>
         <el-form-item label="内网服务IP" prop="local_ip">
@@ -81,7 +85,7 @@
             placeholder="被穿透的服务提供服务的端口号 默认值值：80"
           ></el-input>
         </el-form-item>
-        <el-form-item label="" prop="local_port" v-show="form.app_type == 2">
+        <el-form-item label="" prop="local_port" v-show="form.tunnel_type == 2">
           <el-row>
             <el-button size="mini" type="success" @click="setPort('3389')">3389 (windows远程)</el-button>
             <el-button size="mini" type="warning" @click="setPort('22')">22 (linux远程)</el-button>
@@ -120,20 +124,20 @@ export default {
       editName: "",
       form: {
         remote_port: "",
-        tunnel_id: "",
+        tunnel_id: 0,
         name: "",
         sub_domain: "",
-        app_type: 1,
+        tunnel_type: 1,
         local_ip: "127.0.0.1",
         local_port: 80,
-        client_id: 0
+        server_id: 0
       },
       dialogFormVisible: false,
       rules: {
-        app_type: [
+        tunnel_type: [
           { required: true, message: "请选择隧道类型", trigger: "blur" }
         ],
-        client_id: [
+        server_id: [
           {
             validator: (rule, value, callback) => {
               if (value == 0) {
@@ -153,10 +157,10 @@ export default {
         sub_domain: [
           {
             required: () => {
-              return this.form.app_type == 1;
+              return this.form.tunnel_type == 1;
             },
             validator: (rule, value, callback) => {
-              if (this.form.app_type == 1) {
+              if (this.form.tunnel_type == 1) {
                 validateSubDomian(rule, value, callback);
               } else {
                 callback();
@@ -169,10 +173,10 @@ export default {
         remote_port: [
           {
             required: () => {
-              return this.form.app_type == 2;
+              return this.form.tunnel_type == 2;
             },
             validator: (rule, value, callback) => {
-              if (this.form.app_type == 2) {
+              if (this.form.tunnel_type == 2) {
                 validateRemotPort(rule, value, callback);
               } else {
                 callback();
@@ -208,25 +212,27 @@ export default {
     },
     handleClick(row) {
       this.editName = "修改隧道";
-      this.form.tunnel_id = row.tunnel_id;
-      this.form.name = row.name;
-      this.form.sub_domain = row.sub_domain;
-      this.form.local_ip = row.local_ip;
-      this.form.local_port = row.local_port;
-      this.form.client_id = row.client_id;
+      this.form = row;
 
       this.dialogFormVisible = true;
     },
     addTunnel(formName) {
       this.editName = "创建隧道";
-      this.form.tunnel_id = 0;
-      this.form.name = "";
-      this.form.sub_domain = "";
-      this.form.local_ip = "127.0.0.1";
-      this.form.local_port = 80;
-      this.form.client_id = 0;
 
+      this.resetForm();
       this.dialogFormVisible = true;
+    },
+    resetForm() {
+      this.form = {
+        remote_port: "",
+        tunnel_id: 0,
+        name: "",
+        sub_domain: "",
+        tunnel_type: 1,
+        local_ip: "127.0.0.1",
+        local_port: 80,
+        server_id: 0
+      };
     },
     submit(formName) {
       let that = this;
@@ -248,9 +254,7 @@ export default {
         }
       });
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    },
+
     init() {
       this.$store.dispatch(FETCH_CLIENTS);
       this.$store

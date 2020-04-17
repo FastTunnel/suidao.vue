@@ -2,7 +2,8 @@ import ApiService from "@/common/api.service";
 import {
   FETCH_PROFILE,
   FETCH_PROFILE_FOLLOW,
-  FETCH_PROFILE_UNFOLLOW
+  FETCH_PROFILE_UNFOLLOW,
+  RESET_ACCESS
 } from "./actions.type";
 import { SET_PROFILE } from "./mutations.type";
 
@@ -18,11 +19,22 @@ const getters = {
 };
 
 const actions = {
+  [RESET_ACCESS](context) {
+    return ApiService.post("user/resetAccess")
+      .then((data) => {
+        context.commit(SET_PROFILE, data);
+        return data;
+      })
+      .catch(() => {
+        // #todo SET_ERROR cannot work in multiple states
+        // context.commit(SET_ERROR, response.data.errors)
+      });
+  },
   [FETCH_PROFILE](context) {
     return ApiService.post("user/profiles")
-      .then(({ data }) => {
-        console.log(data);
-        context.commit(SET_PROFILE, data.profile);
+      .then((data) => {
+        console.log("profiles", data);
+        context.commit(SET_PROFILE, data);
         return data;
       })
       .catch(() => {

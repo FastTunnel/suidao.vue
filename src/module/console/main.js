@@ -13,7 +13,7 @@ let mgr = new Mgr();
 
 const TITLE = "FastTunnel ";
 ApiService.init();
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 Vue.use(ElementUI, { size: 'medium', zIndex: 3000 });
 
 // Ensure we checked auth before each page load.
