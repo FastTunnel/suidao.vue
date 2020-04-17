@@ -24,13 +24,14 @@
     <div>
       <a href="https://github.com/SpringHgui/FastTunnel/releases" target="_blank">去Gitbhu下载</a>
     </div>
-    
     <div class="down-box">
       <a href="/SuiDao.Client.win-x64.zip" target="_blank">win-x64</a>
       <a href="/SuiDao.Client.osx-x64.zip" target="_blank">osx-x64</a>
       <a href="/SuiDao.Client.linux-x64.zip" target="_blank">linux-x64</a>
     </div>
-    <div></div>
+    <div style="padding-top: 50px;">登录方式： 通过个人
+      <router-link class="link" to="/profile">AccessKey</router-link>进行登录
+    </div>
   </div>
 </template>
 

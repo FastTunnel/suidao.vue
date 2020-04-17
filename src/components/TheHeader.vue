@@ -49,9 +49,9 @@
           <el-button size="small" @click="signup">注册</el-button>
         </div>
         <div v-if="isAuthenticated">
-          <div class="menu-item" style="padding-right: 45px;">
-            <a href="/console.html#/" class="nav-link router-link-exact-active active">控制台</a>
-          </div>
+          <a href="/console.html#/" class="nav-link router-link-exact-active active">
+            <div class="menu-item" style="padding-right: 45px;">控制台</div>
+          </a>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
               {{ currentUser && currentUser.profile ? currentUser.profile.name:""}}
@@ -60,9 +60,9 @@
               ></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
-              <el-dropdown-item>
-                <router-link :to="{ name: 'profile'}" class="el-link el-link--default">个人中心</router-link>
-              </el-dropdown-item>
+              <router-link :to="{ name: 'profile'}" class="el-link el-link--default">
+                <el-dropdown-item>个人中心</el-dropdown-item>
+              </router-link>
               <el-dropdown-item @click.native="logOut" divided>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>

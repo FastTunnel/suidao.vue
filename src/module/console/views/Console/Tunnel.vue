@@ -32,6 +32,9 @@
     <div style="margin-top: 20px">
       <el-button @click="addTunnel('formName')">创建</el-button>
     </div>
+    <div style="padding-top: 50px;">登录方式调整： 通过个人
+      <router-link class="link" to="/profile">AccessKey</router-link>进行登录
+    </div>
     <!-- Form -->
     <el-dialog :title="editName" :visible.sync="dialogFormVisible">
       <el-form :model="form" label-width="120px" :rules="rules" ref="ruleForm">
