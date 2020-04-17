@@ -51,7 +51,6 @@
         <div v-if="isAuthenticated">
           <div class="menu-item" style="padding-right: 45px;">
             <a href="/console.html#/" class="nav-link router-link-exact-active active">控制台</a>
-            <!-- <router-link to="console.html" class="nav-link" active-class="active">控制台</router-link> -->
           </div>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
@@ -99,9 +98,7 @@ export default {
       });
     },
     signup() {
-      this.$router.push({
-        name: "signup"
-      });
+      window.location.href = "/console.html#/signup";
     },
     logOut() {
       // this.$store.dispatch(LOGOUT).then(() => {

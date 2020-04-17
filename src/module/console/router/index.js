@@ -64,6 +64,14 @@ const routes = [
         }
     },
     {
+        path: '/signup',
+        name: 'signup',
+        component: () => import("./../views/Signup"),
+        meta: {
+            requiresAuth: false
+        }
+    },
+    {
         // 会匹配所有路径
         path: '*',
         component: () => import("./../views/_404"),
