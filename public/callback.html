@@ -12,9 +12,9 @@
     var mgr = new Oidc.UserManager({ userStore: new Oidc.WebStorageStateStore(), loadUserInfo: true, filterProtocolClaims: true, response_mode: "query" });
 
     mgr.signinRedirectCallback().then(function (user) {
-      window.location.href = '/console.html';
+      window.location = '/console.html';
     }).catch(function (err) {
-      console.log(err);
+      window.location = '/';
     });
 
   </script>

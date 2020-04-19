@@ -91,7 +91,9 @@ export default {
       let that = this;
       this.$store
         .dispatch(REGISTER, this.signForm)
-        .then(() => that.$router.push({ name: "home" }))
+        .then(() => {
+          window.location = "/";
+        })
         .catch(error => {
           that.$message.error(error);
         });
