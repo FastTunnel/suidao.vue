@@ -1,5 +1,5 @@
-import Vue from "vue";
-import axios from "axios";
+// import Vue from "vue";
+// import axios from "axios";
 import VueAxios from "vue-axios";
 import JwtService from "@/common/jwt.service.js";
 import { API_URL } from "@/common/config.js";

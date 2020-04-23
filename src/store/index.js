@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+// import Vue from "vue";
+// import Vuex from "vuex";
 
 import auth from "./auth.module";
 import profile from "./profile.module";

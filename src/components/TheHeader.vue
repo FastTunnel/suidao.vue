@@ -40,7 +40,8 @@
     <div class="menu">
       <div class="menu-item">
         <a href="/#/" class="nav-link router-link-exact-active active">
-          <el-image class="logo" src="/logo.png" fit="fit"></el-image>FastTunnel
+          <!-- <el-image class="logo" src="/logo.png" fit="fit"></el-image> -->
+          SuiDao
         </a>
       </div>
       <div class="menu-item" style="float: right;">

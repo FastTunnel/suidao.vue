@@ -8,8 +8,10 @@
 
 <template>
   <div>
-    <div class="welcome">Welcome to FastTunnel！</div>
-    <div class="welcome">为您提供免费内网穿透服务</div>
+    <div class="welcome">Welcome to SuiDao！</div>
+    <div class="welcome">基于开源
+      <a href="https://github.com/SpringHgui/FastTunnel" target="_blank">FastTunnel</a>实现的内网穿透服务
+    </div>
   </div>
 </template>
 

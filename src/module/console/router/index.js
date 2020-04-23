@@ -1,7 +1,7 @@
-import Vue from "vue";
-import Router from "vue-router";
+// import Vue from "vue";
+// import VueRouter from "vue-router";
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -82,7 +82,7 @@ const routes = [
     }
 ]
 
-export default new Router({
+export default new VueRouter({
     // mode: "history",
     routes,
 });

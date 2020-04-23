@@ -1,7 +1,7 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import App from './App.vue'
 import router from "./router";
-import ElementUI from 'element-ui';
+// import ElementUI from 'element-ui';
 import store from "@/store";
 import ApiService from "../../common/api.service";
 import { UPDATE_USER, LOGOUT } from "@/store/actions.type";
@@ -14,7 +14,7 @@ let mgr = new Mgr();
 const TITLE = "FastTunnel ";
 ApiService.init();
 Vue.config.productionTip = true
-Vue.use(ElementUI, { size: 'medium', zIndex: 3000 });
+Vue.use(ELEMENT, { size: 'medium', zIndex: 3000 });
 
 // Ensure we checked auth before each page load.
 router.beforeEach((to, from, next) => {

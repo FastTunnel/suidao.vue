@@ -11,9 +11,13 @@
       <el-table-column prop="remote_port" label="映射端口"></el-table-column>
       <el-table-column prop="local_ip" label="本地ip"></el-table-column>
       <el-table-column prop="local_port" label="本地端口"></el-table-column>
-      <el-table-column prop="addr" label="访问地址" width="240"></el-table-column>
+      <el-table-column prop="addr" label="访问地址" width="260">
+        <template slot-scope="scope">
+          <a :href="scope.row.addr" target="_blank">{{scope.row.addr}}</a>
+        </template>
+      </el-table-column>
       <!-- <el-table-column prop="server_name" label="服务器"></el-table-column> -->
-      <el-table-column prop="enabled" label="启用状态">
+      <!-- <el-table-column prop="enabled" label="启用状态">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.enabled"
@@ -22,7 +26,7 @@
             @change="changeEnable($event, scope.row)"
           ></el-switch>
         </template>
-      </el-table-column>
+      </el-table-column>-->
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
