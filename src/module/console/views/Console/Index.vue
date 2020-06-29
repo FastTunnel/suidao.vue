@@ -22,7 +22,7 @@
       <div class="line">
         <a
           class="link"
-          href="https://github.com/SpringHgui/FastTunnel/blob/master/README.md#%E5%90%84%E7%A7%8D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E4%BB%A5fasttunnelclient%E4%B8%BA%E4%BE%8B"
+          href="https://github.com/SpringHgui/FastTunnel/blob/master/README.md#run-on-linuxmac-os"
           target="_blank"
         >查看Mac和Linux如何运行？</a>
       </div>
