@@ -42,7 +42,7 @@ const routes = [
                 path: 'download',
                 component: () => import("./../views/Console/Download"),
                 meta: {
-                    requiresAuth: true,
+                    requiresAuth: false,
                     title: "下载客户端"
                 }
             }
