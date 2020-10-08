@@ -14,6 +14,15 @@ const routes = [
         }
     },
     {
+        path: "/console.html#/profile",
+        name: "profile",
+        component: () => import("./../../console/views/Profile"),
+        meta: {
+            requiresAuth: true,
+            title: "免费内网穿透工具"
+        }
+    },
+    {
         // 会匹配所有路径
         path: '*',
         component: () => import("./../views/_404"),

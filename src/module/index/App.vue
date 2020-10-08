@@ -22,18 +22,16 @@ body {
 
 <template>
   <div id="app">
-    <el-container style="height:100%;">
+    <el-container style="height: 100%">
       <el-header>
-        <RwvHeader/>
+        <RwvHeader />
       </el-header>
       <el-main class="boder-top boder-bottom">
         <div class="body">
           <router-view></router-view>
         </div>
       </el-main>
-      <el-footer>
-        <RwvFooter></RwvFooter>
-      </el-footer>
+      <RwvFooter></RwvFooter>
     </el-container>
   </div>
 </template>
@@ -46,8 +44,8 @@ export default {
   name: "App",
   components: {
     RwvHeader,
-    RwvFooter
-  }
+    RwvFooter,
+  },
 };
 </script>
  
