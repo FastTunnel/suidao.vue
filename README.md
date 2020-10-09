@@ -1,5 +1,5 @@
 # suidao.vue
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8a8421c7-4c2a-4646-9bde-c826124a8478/deploy-status)](https://app.netlify.com/sites/pedantic-kare-0359fc/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1d7005ca-ccce-4703-b0b2-631dc483f5e0/deploy-status)](https://app.netlify.com/sites/suidao/deploys)
 
 ## Project setup
 ```
