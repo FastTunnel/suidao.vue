@@ -4,6 +4,11 @@ a:active {
   color: #000;
 }
 
+@font-face { 
+  font-family: 'Dosis';  
+  src: url('../fonts/Dosis/Dosis-Medium.ttf');
+}
+
 body{
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
