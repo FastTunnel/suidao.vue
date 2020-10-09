@@ -25,7 +25,7 @@
         target="_blank"
         >github</a
       >
-      <p style="color: #fff">Copyright © 2014-2020 SuiDao</p>
+      <p style="color: #fff">Copyright © 2020-2020 SuiDao</p>
     </div>
 
     <a
