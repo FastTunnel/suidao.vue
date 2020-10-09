@@ -1,7 +1,7 @@
 a,
 a:hover,
 a:active {
-  color: #000;
+  text-decoration: none;
 }
 
 @font-face { 
@@ -9,6 +9,10 @@ a:active {
   src: url('../fonts/Dosis/Dosis-Medium.ttf');
 }
 
+.el-link{
+  font-size: inherit;
+}
+ 
 body{
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;

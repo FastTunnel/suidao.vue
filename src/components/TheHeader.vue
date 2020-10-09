@@ -43,14 +43,14 @@
   <div class="container-xl">
     <div class="menu">
       <div class="menu-item">
-        <a
+        <el-link
           href="/#/"
-          class="nav-link router-link-exact-active active"
+          :underline="false"
           id="logo"
         >
           <!-- <el-image class="logo" src="/logo.png" fit="fit"></el-image> -->
           SuiDao
-        </a>
+        </el-link>
       </div>
       <div
         class="menu-item"

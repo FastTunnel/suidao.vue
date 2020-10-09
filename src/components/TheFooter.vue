@@ -1,41 +1,43 @@
 <style lang="scss">
 .footer {
-  color: #7b7b7b;
-  text-align: center;
-  background-color: #475050;
+  background-color: #f7fbfd;
+  width: 100%;
+  padding: 40px 150px;
+  box-sizing: border-box;
 }
+
 .el-footer {
   padding: 0;
 }
-.power {
+#power {
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
   font-size: 0.5rem;
-  color: #807e7e !important;
 }
 </style>
 
 <template>
-  <div class="footer">
+  <footer class="footer">
     <div style="">
-      <a
-        style="color: #fff"
+      <el-link
         href="https://github.com/SpringHgui/suidao.vue"
+        :underline="false"
         target="_blank"
-        >github</a
+        >github</el-link
       >
-      <p style="color: #fff">Copyright © 2020-2020 SuiDao</p>
+      <p>Copyright © 2020 SuiDao</p>
     </div>
 
-    <a
-      style="color: #fff"
+    <el-link
       href="https://github.com/SpringHgui/FastTunnel"
       target="_blank"
-      class="power"
-      >Power By FastTunnel</a
+      id="power"
+      :underline="false"
+      type="info"
+      >Power By FastTunnel</el-link
     >
-  </div>
+  </footer>
 </template>
 
 <script>
