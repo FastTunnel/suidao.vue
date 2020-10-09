@@ -3,7 +3,6 @@
   color: #7b7b7b;
   text-align: center;
   background-color: #475050;
-  height: 100px;
 }
 .el-footer {
   padding: 0;
