@@ -4,6 +4,7 @@
   width: 100%;
   padding: 40px 150px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .el-footer {

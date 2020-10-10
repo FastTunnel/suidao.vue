@@ -26,7 +26,7 @@ body {
       <el-header>
         <RwvHeader />
       </el-header>
-      <el-main class="boder-top">
+      <el-main class="boder-top" style="overflow: unset;">
         <div class="body">
           <router-view></router-view>
         </div>
