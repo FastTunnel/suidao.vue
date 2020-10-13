@@ -1,6 +1,8 @@
 <style lang="scss">
 .footer {
-  background-color: #f7fbfd;
+  // background-color: #f7fbfd;
+  background-image:url('../assets/images/rJ4Y4q5nmK.jpg');
+  background-size: cover;
   width: 100%;
   padding: 40px 150px;
   box-sizing: border-box;

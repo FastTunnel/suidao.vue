@@ -1,9 +1,15 @@
 <style>
+.welcome::before {
+  display: inline-block;
+  content: "";
+  height: 100%;
+  vertical-align: middle;
+}
+
 .welcome {
   font-size: 34px;
   text-align: center;
   height: 300px;
-  line-height: 300px;
 }
 .download {
   padding-top: 100px;
@@ -23,7 +29,7 @@
 .notice-box .notice-box-title {
   text-align: center;
   font-size: 1.2rem;
-  color: #03a8fa;
+  color: #586ebd;
 }
 .notice-box {
   min-height: 150px;
