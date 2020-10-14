@@ -3,13 +3,13 @@ module.exports = {
         index: {
             entry: 'src/module/index/main.js',
             // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-            title: 'FastTunnel 免费内网穿透|家中建站|NAT穿透|花生壳|FRP|ngrok',
+            title: '隧道 FastTunnel|免费内网穿透|家中建站|NAT穿透|花生壳|FRP|ngrok',
             // 提取出来的通用 chunk 和 vendor chunk。
             // chunks: ['chunk-vendors', 'chunk-common', 'index']
         },
         console: {
             entry: 'src/module/console/main.js',
-            title: 'FastTunnel 控制台',
+            title: '隧道 控制台',
             // chunks: ['chunk-vendors', 'chunk-common', 'console']
         }
     },

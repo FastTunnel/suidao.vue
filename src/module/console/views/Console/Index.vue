@@ -10,7 +10,7 @@
 
 <template>
   <div class="container-xl">
-    <div class="title">欢迎使用FastTunnel</div>
+    <div class="title">欢迎使用隧道</div>
     <div>
       <div class="line">1.
         <router-link class="link" to="profile">个人中心</router-link>获取`AccessKey`

@@ -11,7 +11,6 @@ import '@/assets/scss/main.scss'
 import Mgr from '@/common/SecurityService';
 let mgr = new Mgr();
 
-const TITLE = "FastTunnel ";
 ApiService.init();
 Vue.config.productionTip = false
 Vue.use(ELEMENT, { size: 'medium', zIndex: 3000 });
@@ -19,16 +18,11 @@ Vue.use(ELEMENT, { size: 'medium', zIndex: 3000 });
 // Ensure we checked auth before each page load.
 router.beforeEach((to, from, next) => {
   console.log('-- beforeEach', from.name, "->", to.name);
-  if(to.meta.title){
-    document.title = TITLE + to.meta.title
-  }else{
-    document.title = TITLE;
-    console.log(to);
-  }
-  
+  if (to.meta.title) document.title = to.meta.title;
+
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   console.log('requiresAuth', requiresAuth);
-  
+
   if (requiresAuth) {
     mgr.getUser(true).then(user => {
       if (user) {
