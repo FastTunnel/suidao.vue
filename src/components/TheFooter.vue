@@ -1,7 +1,7 @@
 <style lang="scss">
 .footer {
-  // background-color: #f7fbfd;
-  background-image:url('../assets/images/rJ4Y4q5nmK.jpg');
+  background-color: #f7fbfd;
+  // background-image:url('../assets/images/rJ4Y4q5nmK.jpg');
   background-size: cover;
   width: 100%;
   padding: 40px 150px;
@@ -27,8 +27,7 @@
         href="https://github.com/SpringHgui/suidao.vue"
         :underline="false"
         target="_blank"
-        >github</el-link
-      >
+      >github</el-link>
       <p>Copyright © 2020 SuiDao</p>
     </div>
 
@@ -38,8 +37,7 @@
       id="power"
       :underline="false"
       type="info"
-      >Power By FastTunnel</el-link
-    >
+    >Power By FastTunnel</el-link>
   </footer>
 </template>
 
