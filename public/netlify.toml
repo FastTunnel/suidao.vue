@@ -1,9 +1,6 @@
 [[redirects]]
   from = "/*"
-  to = "/#/_404"
+  to = "/_404"
   status = 404
-
-[[redirects]]
-  from = "/console.html#/*"
-  to = "/console.html#/_404"
-  status = 404
+  force = false
+  query = {path = ":path"}
