@@ -1,5 +1,1 @@
-[[redirects]]
-  from = "/*"
-  to = "/#/_404"
-  status = 404
-  query = {path = ":path"}
+/*  /#/:splat 404
