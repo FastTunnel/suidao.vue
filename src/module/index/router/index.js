@@ -10,7 +10,6 @@ const routes = [
         component: () => import("./../views/Home"),
         meta: {
             requiresAuth: false,
-            title: "免费内网穿透工具"
         }
     },
     {
@@ -19,7 +18,6 @@ const routes = [
         component: () => import("./../../console/views/Profile"),
         meta: {
             requiresAuth: true,
-            title: "免费内网穿透工具"
         }
     },
     {
