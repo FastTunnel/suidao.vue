@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/*"
+  to = "/#/:splat"
+  status = 404
+  force = true
+  query = {path = ":path"}
