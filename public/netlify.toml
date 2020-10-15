@@ -1,6 +1,5 @@
 [[redirects]]
   from = "/*"
-  to = "/#/:splat"
+  to = "/#/error"
   status = 404
   force = true
-  query = {path = ":path"}
