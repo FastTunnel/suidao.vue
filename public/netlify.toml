@@ -1,5 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/#/error"
+  to = "/#/error/dds"
   status = 404
-  force = true
