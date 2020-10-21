@@ -30,7 +30,7 @@
       <div>
         <el-link
           :underline="false"
-          href="https://github.com/SpringHgui/FastTunnel.SuiDao/releases"
+          href="https://github.com/SpringHgui/FastTunnel"
           target="_blank"
         ><img
             alt="GitHub Repo stars"
