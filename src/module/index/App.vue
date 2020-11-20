@@ -18,12 +18,13 @@ body {
   position: relative;
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
+
 </style>
 
 <template>
   <div id="app">
     <el-container style="height: 100%">
-      <el-header style="height:70px;">
+      <el-header style="height: 70px">
         <RwvHeader />
       </el-header>
       <el-main class="boder-top" style="overflow: unset">
@@ -33,20 +34,20 @@ body {
       </el-main>
       <RwvFooter></RwvFooter>
     </el-container>
-    <GithubCorner></GithubCorner>
+    <!-- <GithubCorner></GithubCorner> -->
   </div>
 </template>
 
 <script>
 import RwvHeader from "@/components/TheHeader";
 import RwvFooter from "@/components/TheFooter";
-import GithubCorner from "@/components/GithubCorner";
+// import GithubCorner from "@/components/GithubCorner";
 export default {
   name: "App",
   components: {
     RwvHeader,
     RwvFooter,
-    GithubCorner,
+    // GithubCorner,
   },
 };
 </script>

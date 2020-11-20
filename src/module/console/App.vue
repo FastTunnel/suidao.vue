@@ -33,21 +33,21 @@ body {
       </el-main>
       <RwvFooter></RwvFooter>
     </el-container>
-    <GithubCorner></GithubCorner>
+    <!-- <GithubCorner></GithubCorner> -->
   </div>
 </template>
 
 <script>
 import RwvHeader from "@/components/TheHeader";
 import RwvFooter from "@/components/TheFooter";
-import GithubCorner from "@/components/GithubCorner";
+// import GithubCorner from "@/components/GithubCorner";
 
 export default {
   name: "App",
   components: {
     RwvHeader,
     RwvFooter,
-    GithubCorner
+    // GithubCorner
   }
 };
 </script>

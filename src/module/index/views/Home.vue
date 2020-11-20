@@ -53,19 +53,17 @@
 
 <template>
   <div>
-    <img
-      class="bgimg"
-      :src="bgimgSrc"
-    >
+    <img class="bgimg" :src="bgimgSrc" />
     <div class="container-xl">
       <div class="welcome">
-        <h1>基于开源<el-link
+        <h1>
+          基于开源<el-link
             :underline="false"
             href="https://github.com/SpringHgui/FastTunnel"
             target="_blank"
-          >FastTunnel</el-link>免费内网穿透服务
+            >FastTunnel</el-link
+          >免费内网穿透服务
         </h1>
-
       </div>
     </div>
     <!-- 场景 -->
@@ -74,16 +72,8 @@
       <div class="notice-title-sub">多种应用场景，你能想到的都能做到！</div>
       <div class="notice-title-sub">更多惊喜，等你发现！</div>
       <el-row :gutter="20">
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">家中建站</div>
               <p class="notice-box-body">
@@ -92,16 +82,8 @@
             </div>
           </el-card>
         </el-col>
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">远程桌面</div>
               <p class="notice-box-body">
@@ -110,16 +92,8 @@
             </div>
           </el-card>
         </el-col>
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">ERP互联互通</div>
               <p class="notice-box-body">
@@ -128,16 +102,8 @@
             </div>
           </el-card>
         </el-col>
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">SVN代码库</div>
               <p class="notice-box-body">
@@ -152,16 +118,8 @@
     <div class="container-xl">
       <div class="notice-title">产品特色</div>
       <el-row :gutter="20">
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">跨平台客户端支持</div>
               <p class="notice-box-body">
@@ -170,16 +128,8 @@
             </div>
           </el-card>
         </el-col>
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">多种安全级别控制</div>
               <p class="notice-box-body">
@@ -188,16 +138,8 @@
             </div>
           </el-card>
         </el-col>
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">无需设置路由端口映射</div>
               <p class="notice-box-body">
@@ -206,16 +148,8 @@
             </div>
           </el-card>
         </el-col>
-        <el-col
-          :xs="24"
-          :sm="12"
-          :md="6"
-          :lg="6"
-        >
-          <el-card
-            class="box-card"
-            shadow="hover"
-          >
+        <el-col :xs="24" :sm="12" :md="6" :lg="6">
+          <el-card class="box-card" shadow="hover">
             <div class="notice-box">
               <div class="notice-box-title">永久免费</div>
               <p class="notice-box-body">所有注册用户均永久免费提供穿透服务</p>
@@ -249,8 +183,8 @@ export default {
   data() {
     return {
       bgimgSrc: require("@/assets/images/qiqiq.svg"),
-      src: require("@/assets/images/1A-dj.svg")
+      src: require("@/assets/images/1A-dj.svg"),
     };
-  }
+  },
 };
 </script>
