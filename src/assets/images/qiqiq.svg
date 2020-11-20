@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2466px" height="702px" viewBox="0 0 2466 702" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>路径</title>
+    <defs>
+        <rect id="path-1" x="0.590411257" y="0.959" width="2464" height="700"></rect>
+        <radialGradient cx="61.9440967%" cy="42.4241663%" fx="61.9440967%" fy="42.4241663%" r="105.553682%" gradientTransform="translate(0.619441,0.424242),scale(0.406779,1.000000),rotate(145.904000),translate(-0.619441,-0.424242)" id="radialGradient-3">
+            <stop stop-color="#C8D9FF" offset="0%"></stop>
+            <stop stop-color="#F2F6FE" offset="45.2622%"></stop>
+            <stop stop-color="#F9FBFF" offset="77.5156%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="页面-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="路径" transform="translate(0.409589, 0.041000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="蒙版"></g>
+            <path d="M2754.24041,-730 L2584.83041,-626.586 L2069.00041,-306.521 L2036.84041,-286.563 L1993.65041,-259.77 L1152.70541,262.027 C1016.88541,346.3 817.619411,317.341 709.872411,197.677 L-53.7345887,-650.395 C-161.470589,-770.048 -663.896589,-760.15 -452.726589,-525.622 L452.755411,480.017 C663.914411,714.533 1054.46541,771.293 1320.63041,606.126 L2327.97041,-18.9054 L2386.84041,-55.4418 L3013.22041,-442.384 L2754.24041,-730 Z" fill="url(#radialGradient-3)" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

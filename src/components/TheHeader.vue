@@ -7,7 +7,7 @@
   border-bottom: solid 0px #e6e6e6 !important;
 }
 .menu-item {
-  line-height: 60px;
+  line-height: 70px;
   display: inline-block;
   padding: 0 5px;
   float: left;
@@ -18,8 +18,6 @@
   color: #000;
 }
 
-.menu {
-}
 .nav-link {
   font-size: 16px;
   text-decoration: none;
@@ -35,7 +33,7 @@
 }
 #logo {
   font-family: "Dosis";
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 </style>
 
@@ -58,13 +56,15 @@
       >
         <div v-if="!isAuthenticated">
           <el-button
-            size="small"
+            size="medium"
             type="text"
             @click="login"
           >登录</el-button>
           <el-button
-            size="small"
+            size="medium"
             @click="signup"
+            type="primary"
+            round
           >注册</el-button>
         </div>
         <div v-if="isAuthenticated">

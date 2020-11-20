@@ -23,7 +23,7 @@ body {
 <template>
   <div id="app">
     <el-container style="height:100%;">
-      <el-header>
+      <el-header style="height:70px;">
         <RwvHeader />
       </el-header>
       <el-main class="boder-top" style="overflow: unset;">

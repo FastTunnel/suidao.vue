@@ -2,6 +2,17 @@ a,
 a:hover,
 a:active {
   text-decoration: none;
+  color: #12141a;
+}
+
+h1{
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 42px;
+  color: #12141a;
+  letter-spacing: .5px;
+  line-height: 64px;
+  margin: 0;
 }
 
 html::-webkit-scrollbar {
@@ -56,10 +67,6 @@ body{
   margin-left: auto;
   margin-bottom: 20px;
   max-width: 1280px;
-}
-
-.boder-top {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .boder-bottom {
