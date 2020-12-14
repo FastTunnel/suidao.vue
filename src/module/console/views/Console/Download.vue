@@ -24,11 +24,6 @@
     <div>
       <el-link :underline="false" href="https://github.com/SpringHgui/FastTunnel.SuiDao/releases" target="_blank">去Gitbhu下载</el-link>
     </div>
-    <div class="down-box">
-      <el-link :underline="false" href="/SuiDao.Client.win-x64.zip" target="_blank">win-x64</el-link>
-      <el-link :underline="false" href="/SuiDao.Client.osx-x64.zip" target="_blank">osx-x64</el-link>
-      <el-link :underline="false" href="/SuiDao.Client.linux-x64.zip" target="_blank">linux-x64</el-link>
-    </div>
     <div style="padding-top: 50px;">登录方式： 通过个人
       <router-link class="link" to="/profile">AccessKey</router-link>进行登录
     </div>
