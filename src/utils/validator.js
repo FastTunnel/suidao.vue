@@ -7,6 +7,28 @@ export const validateEmail = (rule, value, callback) => {
     }
 }
 
+export const validatePass = (rule, value, callback) => {
+    console.log("请输入密码", rule);
+    if (value === "") {
+        callback(new Error("请输入密码"));
+    } else {
+        if (this.signForm.check_pwd !== "") {
+            this.$refs.signForm.validateField("check_pwd");
+        }
+        callback();
+    }
+}
+
+export const validatePass2 = (rule, value, callback) => {
+    if (value === "") {
+        callback(new Error("请再次输入密码"));
+    } else if (value !== this.signForm.check_pwd) {
+        callback(new Error("两次输入密码不一致!"));
+    } else {
+        callback();
+    }
+}
+
 export const validateIP = (rule, value, callback) => {
     if (/((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)/.test(value)) {
         callback();

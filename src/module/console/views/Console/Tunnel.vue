@@ -34,7 +34,7 @@
       </el-table-column>
     </el-table>
     <div style="margin-top: 20px">
-      <el-button @click="addTunnel('formName')">创建</el-button>
+      <el-button @click="addTunnel('formName')" type="primary">创建</el-button>
     </div>
     <div style="padding-top: 50px;">登录方式调整： 通过个人
       <router-link class="link" to="/profile">AccessKey</router-link>进行登录

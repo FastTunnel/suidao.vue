@@ -11,25 +11,39 @@
 <template>
   <div class="signup">
     <div class="title">注册</div>
+
     <el-form
-      :model="signForm"
+      :model="ruleForm"
       status-icon
       :rules="rules"
-      ref="signForm"
+      ref="ruleForm"
       label-width="100px"
-      class="sign-form"
+      class="demo-ruleForm"
     >
       <el-form-item label="注册邮箱" prop="email">
-        <el-input v-model="signForm.email"></el-input>
+        <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
-      <el-form-item label="登录密码" prop="pwd">
-        <el-input type="password" v-model="signForm.pwd" autocomplete="off"></el-input>
+      <el-form-item label="密码" prop="pass">
+        <el-input
+          type="password"
+          v-model="ruleForm.pass"
+          autocomplete="off"
+        ></el-input>
       </el-form-item>
-      <el-form-item label="确认密码" prop="check_pwd">
-        <el-input type="password" v-model="signForm.check_pwd" autocomplete="off"></el-input>
+      <el-form-item label="确认密码" prop="checkPass">
+        <el-input
+          type="password"
+          v-model="ruleForm.checkPass"
+          autocomplete="off"
+        ></el-input>
       </el-form-item>
-      <el-form-item label-width="0px">
-        <el-button type="primary" @click="submitForm('signForm')">注册</el-button>
+
+      <el-form-item>
+        <el-form-item label-width="0px">
+          <el-button type="primary" @click="submitForm('ruleForm')"
+            >注册</el-button
+          >
+        </el-form-item>
       </el-form-item>
     </el-form>
   </div>
@@ -46,8 +60,8 @@ export default {
       if (value === "") {
         callback(new Error("请输入密码"));
       } else {
-        if (this.signForm.check_pwd !== "") {
-          this.$refs.signForm.validateField("check_pwd");
+        if (this.ruleForm.checkPass !== "") {
+          this.$refs.ruleForm.validateField("checkPass");
         }
         callback();
       }
@@ -55,30 +69,29 @@ export default {
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
-      } else if (value !== this.signForm.check_pwd) {
+      } else if (value !== this.ruleForm.pass) {
         callback(new Error("两次输入密码不一致!"));
       } else {
         callback();
       }
     };
-
     return {
-      signForm: {
+      ruleForm: {
         email: "",
-        pwd: "",
-        check_pwd: ""
+        pass: "",
+        checkPass: "",
       },
       rules: {
-        pwd: [{ validator: validatePass, trigger: "blur" }],
-        check_pwd: [{ validator: validatePass2, trigger: "blur" }],
-        email: [{ validator: validateEmail, trigger: "blur" }]
-      }
+        email: [{ validator: validateEmail, trigger: "blur" }],
+        pass: [{ validator: validatePass, trigger: "blur" }],
+        checkPass: [{ validator: validatePass2, trigger: "blur" }],
+      },
     };
   },
   methods: {
     submitForm(formName) {
       let that = this;
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate((valid) => {
         if (valid) {
           that.sign();
         } else {
@@ -90,14 +103,18 @@ export default {
     sign() {
       let that = this;
       this.$store
-        .dispatch(REGISTER, this.signForm)
+        .dispatch(REGISTER, {
+          email: this.ruleForm.email,
+          pwd: this.ruleForm.pass,
+          check_pwd: this.ruleForm.checkPass,
+        })
         .then(() => {
           window.location = "/";
         })
-        .catch(error => {
+        .catch((error) => {
           that.$message.error(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>
