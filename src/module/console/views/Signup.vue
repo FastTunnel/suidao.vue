@@ -5,13 +5,14 @@
 }
 .signup {
   text-align: center;
+  width: 600px;
+  margin: auto;
 }
 </style>
  
 <template>
   <div class="signup">
-    <div class="title">注册</div>
-
+    <h1 class="title">免费注册</h1>
     <el-form
       :model="ruleForm"
       status-icon
@@ -23,7 +24,7 @@
       <el-form-item label="注册邮箱" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pass">
+      <el-form-item label="登录密码" prop="pass">
         <el-input
           type="password"
           v-model="ruleForm.pass"
@@ -38,13 +39,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item>
-        <el-form-item label-width="0px">
-          <el-button type="primary" @click="submitForm('ruleForm')"
-            >注册</el-button
-          >
-        </el-form-item>
-      </el-form-item>
+      <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
     </el-form>
   </div>
 </template>
