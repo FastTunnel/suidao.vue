@@ -28,7 +28,7 @@
         type="primary"
         href="https://github.com/SpringHgui/FastTunnel.SuiDao/releases"
         target="_blank"
-        >去Gitbhu下载</el-link
+        >去Github下载</el-link
       >
     </div>
     <div style="padding-top: 50px">
