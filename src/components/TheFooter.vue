@@ -4,7 +4,7 @@
   // background-image:url('../assets/images/rJ4Y4q5nmK.jpg');
   background-size: cover;
   width: 100%;
-  padding: 50px 150px 20px 150px;
+  padding: 50px 0 25px 0;
   box-sizing: border-box;
   position: relative;
   text-align: center;
@@ -26,28 +26,31 @@
 
 <template>
   <footer class="footer">
+    <div style="position: absolute; right: 90px; bottom: 10px">
+      <img :src="qqGroup" style="height: 100px" alt="qq交流群" />
+      <div style="font-size: 11px; color: gray">qq交流群</div>
+    </div>
     <div class="links">
       <div>
         <el-link
           :underline="false"
           href="https://github.com/SpringHgui/FastTunnel"
           target="_blank"
-        ><img
+          ><img
             alt="GitHub Repo stars"
             src="https://img.shields.io/github/stars/springhgui/fasttunnel?style=social"
-          ></el-link>
+        /></el-link>
         <el-link
           :underline="false"
           href="https://gitee.com/Hgui/FastTunnel"
           target="_blank"
         >
           <img
-            src='https://gitee.com/Hgui/FastTunnel/badge/star.svg?theme=gvp'
-            alt='star'
+            src="https://gitee.com/Hgui/FastTunnel/badge/star.svg?theme=gvp"
+            alt="star"
           />
         </el-link>
       </div>
-      
       <p>Copyright © 2020 SuiDao</p>
     </div>
 
@@ -63,5 +66,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return { qqGroup: require("@/assets/images/qq_group.png") };
+  },
+};
 </script>
