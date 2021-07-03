@@ -6,14 +6,16 @@ import store from "@/store";
 import ApiService from "../../common/api.service";
 import { UPDATE_USER, LOGOUT } from "@/store/actions.type";
 
-import '@/assets/scss/element-variables.scss'
+Vue.use(ELEMENT, { size: 'medium', zIndex: 3000 });
+
 import '@/assets/scss/main.scss'
+import '@/assets/scss/element-variables.scss'
+import '@/assets/scss/elment-adgust.scss'
 import Mgr from '@/common/SecurityService';
 let mgr = new Mgr();
 
 ApiService.init();
 Vue.config.productionTip = false
-Vue.use(ELEMENT, { size: 'medium', zIndex: 3000 });
 
 // Ensure we checked auth before each page load.
 router.beforeEach((to, from, next) => {

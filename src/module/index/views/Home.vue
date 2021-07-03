@@ -19,9 +19,10 @@
   text-align: center;
 }
 .notice-title {
-  font-size: 1.5rem;
+  font-size: 40px;
   text-align: center;
   padding: 15px;
+  font-weight: 400;
 }
 .notice-title-sub {
   font-size: 1rem;
@@ -68,7 +69,7 @@
     </div>
     <!-- 场景 -->
     <div class="container-xl">
-      <div class="notice-title">使用场景</div>
+      <h3 class="notice-title">使用场景</h3>
       <div class="notice-title-sub">多种应用场景，你能想到的都能做到！</div>
       <div class="notice-title-sub">更多惊喜，等你发现！</div>
       <el-row :gutter="20">
@@ -116,7 +117,7 @@
     </div>
     <!-- 特色 -->
     <div class="container-xl">
-      <div class="notice-title">产品特色</div>
+      <h3 class="notice-title">产品特色</h3>
       <el-row :gutter="20">
         <el-col :xs="24" :sm="12" :md="6" :lg="6">
           <el-card class="box-card" shadow="hover">

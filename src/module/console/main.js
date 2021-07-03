@@ -6,8 +6,9 @@ import store from "@/store";
 import ApiService from "../../common/api.service";
 import { UPDATE_USER, LOGOUT } from "@/store/actions.type";
 
-import '@/assets/scss/element-variables.scss'
 import '@/assets/scss/main.scss'
+import '@/assets/scss/element-variables.scss'
+import '@/assets/scss/elment-adgust.scss'
 import Mgr from '@/common/SecurityService';
 let mgr = new Mgr();
 

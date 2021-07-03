@@ -1,6 +1,6 @@
 <style lang="scss">
 .footer {
-  background-color: #f7fbfd;
+  background-color: #022144;
   // background-image:url('../assets/images/rJ4Y4q5nmK.jpg');
   background-size: cover;
   width: 100%;
@@ -8,6 +8,8 @@
   box-sizing: border-box;
   position: relative;
   text-align: center;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
 }
 
 .el-footer {
