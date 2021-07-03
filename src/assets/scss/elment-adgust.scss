@@ -1,0 +1,28 @@
+.el-card {
+    border: none;
+}
+.el-menu {
+    border: none;
+}
+.el-menu-item {
+    background-color: var(--main-bg-color);
+    margin-bottom: 0.5em;
+    border-radius: 0.5em;
+}
+.el-link {
+    font-size: inherit;
+}
+.nav-link {
+    font-size: inherit;
+}
+
+// 自定义
+h1 {
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 42px;
+    color: #12141a;
+    letter-spacing: 0.5px;
+    line-height: 64px;
+    margin: 0;
+}
