@@ -10,15 +10,15 @@
 
 <template>
   <div class="container-xl">
-    <div class="title">欢迎使用隧道</div>
+    <div class="title">欢迎使用SuiDao(隧道)</div>
     <div>
       <div class="line">1.
-        <router-link class="link" to="profile">个人中心</router-link>获取`AccessKey`
+        在<router-link class="link" to="profile">个人中心</router-link>获取用于客户端登录的`AccessKey`
       </div>
       <div class="line">2.
-        <router-link class="link" to="/tunnel">创建隧道</router-link>
+        在<router-link class="link" to="/tunnel">创建隧道</router-link>页面，创建需要穿透的隧道信息。
       </div>
-      <div class="line">3.启动客户端软件, 并使用`AccessKey`进行登录, 客户端需一直保持运行状态。</div>
+      <div class="line">3.下载并启动客户端软件, 根据提示录入`AccessKey`进行登录, 登录成功后根据映射信息提示进行访问你的服务。</div>
       <div class="line">
         <a
           class="link"

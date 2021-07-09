@@ -30,14 +30,14 @@ const routes = [
                     title: "隧道管理"
                 }
             },
-            {
-                path: 'client',
-                component: () => import("./../views/Console/Client"),
-                meta: {
-                    requiresAuth: true,
-                    title: "客户端管理"
-                }
-            },
+            // {
+            //     path: 'client',
+            //     component: () => import("./../views/Console/Client"),
+            //     meta: {
+            //         requiresAuth: true,
+            //         title: "客户端管理"
+            //     }
+            // },
             {
                 path: 'download',
                 component: () => import("./../views/Console/Download"),
@@ -45,7 +45,15 @@ const routes = [
                     requiresAuth: false,
                     title: "下载客户端"
                 }
-            }
+            },
+            {
+                path: 'problems',
+                component: () => import("./../views/Console/Problems"),
+                meta: {
+                    requiresAuth: false,
+                    title: "常见问题"
+                }
+            },
         ],
     }, {
         path: '/profile',

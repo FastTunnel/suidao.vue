@@ -35,13 +35,17 @@
 </style>
 
 <template>
-  <el-container style="height: 100%;">
+  <el-container style="height: 100%">
     <!-- 侧边栏导航 -->
     <el-aside width="200px">
       <el-menu default-active="2" class="el-menu-vertical-ft" router>
-        <el-menu-item :index="item.index" :key="index" v-for="(item, index) in menu">
+        <el-menu-item
+          :index="item.index"
+          :key="index"
+          v-for="(item, index) in menu"
+        >
           <i :class="item.icon"></i>
-          <span slot="title">{{item.title}}</span>
+          <span slot="title">{{ item.title }}</span>
         </el-menu-item>
       </el-menu>
     </el-aside>
@@ -61,26 +65,31 @@ export default {
         {
           title: "使用说明",
           icon: "el-icon-notebook-2",
-          index: "/"
+          index: "/",
         },
         {
           title: "隧道管理",
           icon: "el-icon-share",
-          index: "/tunnel"
+          index: "/tunnel",
         },
         {
           title: "客户端下载",
           icon: "el-icon-download",
-          index: "/download"
-        }
+          index: "/download",
+        },
+        {
+          title: "常见问题",
+          icon: "el-icon-bell",
+          index: "/problems",
+        },
       ],
-      lazy: true
+      lazy: true,
     };
   },
   methods: {
     clickTab(e) {
       console.log(e);
-    }
-  }
+    },
+  },
 };
 </script>
