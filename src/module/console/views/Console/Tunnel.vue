@@ -83,7 +83,7 @@
             v-model="form.sub_domain"
             autocomplete="off"
             placeholder="自定义域名前缀 如：dev_test-1、test-1"
-            ><template slot="append">{{ serverDomain }}</template></el-input
+            ><template slot="append">.{{ serverDomain }}</template></el-input
           >
         </el-form-item>
         <el-form-item
@@ -99,7 +99,7 @@
           </el-input>
           <div class="notice">
             需要CNAME类型解析至子域名 {{ form.sub_domain }}.{{ serverDomain }}.
-            或A类型解析至{{ serverDomain }}对应的ip地址
+            或A类型解析至{{form.sub_domain}}.{{ serverDomain }}对应的ip地址,通过 个人域名:{{bind_port}} 访问
           </div>
         </el-form-item>
         <el-form-item
