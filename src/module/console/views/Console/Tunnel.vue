@@ -2,6 +2,14 @@
 .notice {
   font-size: 12px;
   color: #4f71ff;
+  font-weight: 700;
+}
+.notice span.tag {
+  background-color: #dee3ff;
+  padding: 2px 4px;
+  color: #4b6dfd;
+  border-radius: 5px;
+  font-weight: 700;
 }
 </style>
 
@@ -33,9 +41,7 @@
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="handleClick(scope.row)"
-            >编辑</el-button
-          >
+          <el-button type="text" size="small" @click="handleClick(scope.row)">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -48,10 +54,7 @@
       <el-form :model="form" label-width="120px" :rules="rules" ref="ruleForm">
         <el-form-item label="服务器" prop="server_id">
           <el-select v-model="form.server_id" placeholder="请选择服务器">
-            <el-option
-              :label="unselect.label"
-              :value="unselect.val"
-            ></el-option>
+            <el-option :label="unselect.label" :value="unselect.val"></el-option>
             <el-option
               :label="item.server_name"
               :value="item.server_id"
@@ -63,50 +66,42 @@
         </el-form-item>
         <el-form-item label="隧道类型" prop="tunnel_type">
           <el-radio-group v-model="form.tunnel_type">
-            <el-radio :label="1">Web穿透</el-radio>
+            <el-radio :label="1">HTTP穿透</el-radio>
             <el-radio :label="2">SSH/远程桌面/端口转发</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="隧道名称" prop="name">
-          <el-input
-            v-model="form.name"
-            autocomplete="off"
-            placeholder="用于用户区分隧道 如：测试、生产、xx站点"
-          ></el-input>
+          <el-input v-model="form.name" autocomplete="off" placeholder="用于用户区分隧道 如：测试、生产、xx站点"></el-input>
         </el-form-item>
-        <el-form-item
-          label="子域名"
-          prop="sub_domain"
-          v-show="form.tunnel_type == 1"
-        >
+        <el-form-item label="子域名" prop="sub_domain" v-show="form.tunnel_type == 1">
           <el-input
             v-model="form.sub_domain"
             autocomplete="off"
             placeholder="自定义域名前缀 如：dev_test-1、test-1"
-            ><template slot="append">.{{ serverDomain }}</template></el-input
           >
-        </el-form-item>
-        <el-form-item
-          label="个人域名"
-          prop="custom_domain"
-          v-show="form.tunnel_type == 1"
-        >
-          <el-input
-            v-model="form.custom_domain"
-            autocomplete="off"
-            placeholder="绑定自己拥有的域名"
-          >
+            <template slot="append">.{{ choosedServe.domain }}</template>
           </el-input>
+        </el-form-item>
+        <el-form-item label="个人域名" prop="custom_domain" v-show="form.tunnel_type == 1">
+          <el-input v-model="form.custom_domain" autocomplete="off" placeholder="绑定自己拥有的域名"></el-input>
           <div class="notice">
-            需要CNAME类型解析至子域名 {{ form.sub_domain }}.{{ serverDomain }}.
-            或A类型解析至{{form.sub_domain}}.{{ serverDomain }}对应的ip地址,通过 个人域名:{{bind_port}} 访问
+            需要CNAME类型解析至子域名
+            <span class="tag">{{ form.sub_domain }}.{{ choosedServe.domain }}.</span>
+            或A类型解析至
+            <span class="tag">{{ form.sub_domain }}.{{ choosedServe.domain }}</span>
+            对应的ip地址
+            <span v-show="form.custom_domain">
+              ,通过
+              <span class="tag">
+                <a
+                  target="_blank"
+                  :href="form.custom_domain + ':' + choosedServe.bind_port"
+                >{{ form.custom_domain }}:{{ choosedServe.bind_port }}</a>
+              </span> 访问
+            </span>
           </div>
         </el-form-item>
-        <el-form-item
-          label="映射端口"
-          prop="remote_port"
-          v-show="form.tunnel_type == 2"
-        >
+        <el-form-item label="映射端口" prop="remote_port" v-show="form.tunnel_type == 2">
           <el-input
             v-model="form.remote_port"
             autocomplete="off"
@@ -128,24 +123,16 @@
             placeholder="被穿透的服务提供服务的端口号 默认值值：80"
           ></el-input>
         </el-form-item>
-        <el-form-item label="" prop="local_port" v-show="form.tunnel_type == 2">
+        <el-form-item label prop="local_port" v-show="form.tunnel_type == 2">
           <el-row>
-            <el-button size="mini" type="success" @click="setPort('3389')"
-              >3389 (windows远程)</el-button
-            >
-            <el-button size="mini" type="warning" @click="setPort('22')"
-              >22 (linux远程)</el-button
-            >
-            <el-button size="mini" type="danger" @click="setPort('3306')"
-              >3306 (mysql)</el-button
-            >
+            <el-button size="mini" type="success" @click="setPort('3389')">3389 (windows远程)</el-button>
+            <el-button size="mini" type="warning" @click="setPort('22')">22 (linux远程)</el-button>
+            <el-button size="mini" type="danger" @click="setPort('3306')">3306 (mysql)</el-button>
           </el-row>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="danger" @click="del('ruleForm')" v-if="form.tunnel_id"
-          >删 除</el-button
-        >
+        <el-button type="danger" @click="del('ruleForm')" v-if="form.tunnel_id">删 除</el-button>
         <el-button type="primary" @click="submit('ruleForm')">确 定</el-button>
       </div>
     </el-dialog>
@@ -320,22 +307,26 @@ export default {
     },
     del(formName) {
       let that = this;
-      that.$store
-        .dispatch(DEL_TUNNEL, { tunnel_id: that.form.tunnel_id })
-        .then(() => {
-          that.dialogFormVisible = false;
-          that.$message({ message: "操作成功", type: "success" });
-          that.init();
+      this.$confirm('隧道删除后无法恢复，确定要删除吗？')
+        .then(_ => {
+          that.$store
+            .dispatch(DEL_TUNNEL, { tunnel_id: that.form.tunnel_id })
+            .then(() => {
+              that.dialogFormVisible = false;
+              that.$message({ message: "操作成功", type: "success" });
+              that.init();
+            })
+            .catch((err) => {
+              that.$message.error(err);
+            });
         })
-        .catch((err) => {
-          that.$message.error(err);
-        });
+        .catch(_ => { });
     },
     init() {
       this.$store.dispatch(FETCH_CLIENTS);
       this.$store
         .dispatch(FETCH_TUNNELS, {})
-        .then(() => {})
+        .then(() => { })
         .catch((err) => {
           this.$message.error(err);
         });
@@ -343,11 +334,11 @@ export default {
   },
   computed: {
     ...mapGetters(["tunnels", "clients"]),
-    serverDomain() {
+    choosedServe() {
       for (let index = 0; index < this.clients.length; index++) {
         const element = this.clients[index];
         if (this.form.server_id == element.server_id) {
-          return element.domain;
+          return element;
         }
       }
 
