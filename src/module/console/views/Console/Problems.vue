@@ -8,7 +8,7 @@
       <li>
         <el-link
           type="primary"
-          href="https://github.com/SpringHgui/FastTunnel/blob/master/README.md#run-on-linuxmac-os"
+          href="https://gitee.com/Hgui/FastTunnel/wikis/SuiDao%20%E5%9C%A8linux%E6%88%96mac%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C?sort_id=5088417"
           target="_blank"
           >查看Mac和Linux如何运行？</el-link
         >
