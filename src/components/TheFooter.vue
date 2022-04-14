@@ -28,9 +28,8 @@
 
 <template>
   <footer class="footer">
-    <div style="position: absolute; right: 90px; bottom: 10px">
+    <div style="position: fixed; right: 40px; bottom: 20px; height: 200px">
       <img :src="mp" style="height: 100px" alt="qq交流群" />
-      <div style="font-size: 11px; color: gray">qq交流群</div>
     </div>
     <div class="links">
       <div>
