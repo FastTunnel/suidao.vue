@@ -29,7 +29,7 @@
 <template>
   <footer class="footer">
     <div style="position: fixed; right: 40px; bottom: 20px; height: 200px">
-      <img :src="mp" style="height: 100px" alt="qq交流群" />
+      <img :src="mp" style="height: 100%" alt="qq交流群" />
     </div>
     <div class="links">
       <div>
