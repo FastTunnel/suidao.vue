@@ -29,7 +29,7 @@
 <template>
   <footer class="footer">
     <div style="position: absolute; right: 90px; bottom: 10px">
-      <img :src="qqGroup" style="height: 100px" alt="qq交流群" />
+      <img :src="mp" style="height: 100px" alt="qq交流群" />
       <div style="font-size: 11px; color: gray">qq交流群</div>
     </div>
     <div class="links">
@@ -70,7 +70,10 @@
 <script>
 export default {
   data() {
-    return { qqGroup: require("@/assets/images/qq_group.png") };
+    return {
+      mp: require("@/assets/images/mp.png"),
+      qqGroup: require("@/assets/images/qq_group.png"),
+    };
   },
 };
 </script>
