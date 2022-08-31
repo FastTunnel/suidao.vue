@@ -24,7 +24,7 @@
       <li>
         <el-link
           type="primary"
-          href="https://gitee.com/Hgui/FastTunnel/wikis/Linux%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C&%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF?sort_id=4215726"
+          href="https://docs.suidao.io/guide/getting-started.html#%E5%A6%82%E4%BD%95%E5%9C%A8-linux-mac%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C"
           target="_blank"
           >Linux系统如何设置后台运行&开机自启</el-link
         >
