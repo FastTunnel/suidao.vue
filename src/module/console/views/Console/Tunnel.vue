@@ -67,7 +67,7 @@
         <el-form-item label="隧道类型" prop="tunnel_type">
           <el-radio-group v-model="form.tunnel_type">
             <el-radio :label="1">HTTP穿透</el-radio>
-            <el-radio :label="2">SSH/远程桌面/端口转发</el-radio>
+            <el-radio :label="2">TCP穿透</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="隧道名称" prop="name">
