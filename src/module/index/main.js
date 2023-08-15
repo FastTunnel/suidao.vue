@@ -18,37 +18,42 @@ ApiService.init();
 Vue.config.productionTip = false
 
 // Ensure we checked auth before each page load.
-router.beforeEach((to, from, next) => {
-  console.log('-- beforeEach', from.name, "->", to.name);
-  if (to.meta.title) document.title = to.meta.title;
+// router.beforeEach((to, from, next) => {
+//   console.log('-- beforeEach', from.name, "->", to.name);
+//   if (to.meta.title) document.title = to.meta.title;
 
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  console.log('requiresAuth', requiresAuth);
+//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+//   console.log('requiresAuth', requiresAuth);
+//   if (!requiresAuth) {
+//     next();
+//     return;
+//   }
 
-  if (requiresAuth) {
-    mgr.getUser(true).then(user => {
-      if (user) {
-        store.dispatch(UPDATE_USER, user);
-      } else {
-        store.dispatch(LOGOUT, user);
-      }
-    }).catch(err => {
-      console.log(err);
-    })
-    next();
-  } else {
-    mgr.getUser().then(user => {
-      if (user) {
-        store.dispatch(UPDATE_USER, user);
-      } else {
-        store.dispatch(LOGOUT, user);
-      }
-    }).catch(err => {
-      console.log(err);
-    })
-    next();
-  }
-});
+//   // if (requiresAuth) {
+//   //   mgr.getUser(true).then(user => {
+//   //     if (user) {
+//   //       store.dispatch(UPDATE_USER, user);
+//   //     } else {
+//   //       store.dispatch(LOGOUT, user);
+//   //     }
+//   //   }).catch(err => {
+//   //     console.log(err);
+//   //   })
+//   //   next();
+//   // } else {
+//   //   mgr.getUser().then(user => {
+//   //     if (user) {
+//   //       store.dispatch(UPDATE_USER, user);
+//   //     } else {
+//   //       store.dispatch(LOGOUT, user);
+//   //     }
+//   //   }).catch(err => {
+//   //     console.log(err);
+//   //   })
+//   //   next();
+//   // }
+// });
+
 router.onError((e) => {
   console.log(e);
 });

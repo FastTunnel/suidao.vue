@@ -17,13 +17,24 @@ const ID_USER = "id_user";
 
 const state = {
   errors: null,
-  user: {},
+  user: null,
+  token: "",
   isAuthenticated: !!JwtService.getToken()
 };
 
 const getters = {
   currentUser(state) {
-    return state.user;
+    console.log("currentUser", state.user);
+    if (state.user && state.user.token) {
+      return state.user;
+    }
+
+    var json = localStorage.getItem("user")
+    if (json) {
+      return JSON.parse(json);
+    }
+
+    return null;
   },
   isAuthenticated(state) {
     return state.isAuthenticated;
@@ -39,18 +50,19 @@ const mutations = {
     state.user = user;
     state.errors = {};
 
-    // console.log('-- SET_AUTH --', user);
-    JwtService.saveToken(state.user.access_token);
-    JwtService.saveItem(ID_USER, state.user);
+    localStorage.setItem("user", JSON.stringify(user));
 
-    ApiService.setHeader();
+    // JwtService.saveToken(state.user.access_token);
+    // JwtService.saveItem(ID_USER, state.user);
+
+    // ApiService.setHeader();
   },
   [PURGE_AUTH](state) {
     state.isAuthenticated = false;
     state.user = {};
     state.errors = {};
-    JwtService.destroyItem(ID_USER);
-    JwtService.destroyToken();
+    // JwtService.destroyItem(ID_USER);
+    // JwtService.destroyToken();
     // mgr.signoutRedirect();
   }
 };
@@ -59,14 +71,17 @@ const actions = {
   [LOGIN](context, credentials) {
     return new Promise((resolve, reject) => {
       ApiService.post("user/login", credentials)
-        .then(({ data }) => {
-          if (data.success) {
-            context.commit(SET_AUTH, data.data);
-            resolve(data);
-          } else {
-            context.commit(SET_ERROR, data.errorMsg);
-            reject(data.errorMsg);
-          }
+        .then(res => {
+          console.log(res);
+          context.commit(SET_AUTH, res);
+          // if (data.success) {
+          //   context.commit(SET_AUTH, res);
+          //   resolve(data);
+          // } else {
+          //   context.commit(SET_ERROR, data.errorMsg);
+          //   reject(data.errorMsg);
+          // }
+          resolve(res);
         })
         .catch(({ response }) => {
           context.commit(SET_ERROR, response);

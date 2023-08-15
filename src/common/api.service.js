@@ -3,6 +3,7 @@
 import VueAxios from "vue-axios";
 import JwtService from "@/common/jwt.service.js";
 import { API_URL } from "@/common/config.js";
+import store from "@/store";
 
 const ApiService = {
   init() {
@@ -12,24 +13,28 @@ const ApiService = {
   },
 
   setHeader() {
+    console.log(store.getters.currentUser);
     Vue.axios.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${JwtService.getToken()}`;
+    ] = `Bearer ${store.getters.currentUser.token}`;
   },
 
   query(resource, params) {
+    this.setHeader();
     return Vue.axios.get(resource, params).catch(error => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
 
   get(resource, slug = "") {
+    this.setHeader();
     return Vue.axios.get(`${resource}/${slug}`).catch(error => {
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
 
   post(resource, params) {
+    this.setHeader();
     return new Promise((resole, reject) => {
       Vue.axios.post(`${resource}`, params)
         .then((res) => {
@@ -46,14 +51,17 @@ const ApiService = {
   },
 
   update(resource, slug, params) {
+    this.setHeader();
     return Vue.axios.put(`${resource}/${slug}`, params);
   },
 
   put(resource, params) {
+    this.setHeader();
     return Vue.axios.put(`${resource}`, params);
   },
 
   delete(resource) {
+    this.setHeader();
     return Vue.axios.delete(resource).catch(error => {
       throw new Error(`[RWV] ApiService ${error}`);
     });

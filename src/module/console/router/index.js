@@ -80,6 +80,14 @@ const routes = [
         }
     },
     {
+        path: '/login',
+        name: 'login',
+        component: () => import("./../views/Login"),
+        meta: {
+            requiresAuth: false
+        }
+    },
+    {
         // 会匹配所有路径
         path: '*',
         component: () => import("./../views/_404"),

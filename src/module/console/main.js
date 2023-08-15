@@ -9,8 +9,8 @@ import { UPDATE_USER, LOGOUT } from "@/store/actions.type";
 import '@/assets/scss/main.scss'
 import '@/assets/scss/element-variables.scss'
 import '@/assets/scss/elment-adgust.scss'
-import Mgr from '@/common/SecurityService';
-let mgr = new Mgr();
+// import Mgr from '@/common/SecurityService';
+// let mgr = new Mgr();
 
 ApiService.init();
 Vue.config.productionTip = true
@@ -23,29 +23,41 @@ router.beforeEach((to, from, next) => {
     document.title = "隧道 " + to.meta.title
 
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  if (requiresAuth) {
-    mgr.getUser(true).then(user => {
-      if (user) {
-        store.dispatch(UPDATE_USER, user);
-      } else {
-        store.dispatch(LOGOUT, user);
-      }
-    }).catch(err => {
-      console.log(err);
-    })
+  if (!requiresAuth) {
     next();
-  } else {
-    mgr.getUser().then(user => {
-      if (user) {
-        store.dispatch(UPDATE_USER, user);
-      } else {
-        store.dispatch(LOGOUT, user);
-      }
-    }).catch(err => {
-      console.log(err);
-    })
-    next();
+    return;
   }
+
+  console.log(store.getters);
+  if (store.getters.currentUser && store.getters.currentUser.token) {
+    next(); return;
+  }
+
+  next({ name: 'login' })
+
+  // if (requiresAuth) {
+  //   mgr.getUser(true).then(user => {
+  //     if (user) {
+  //       store.dispatch(UPDATE_USER, user);
+  //     } else {
+  //       store.dispatch(LOGOUT, user);
+  //     }
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
+  //   next();
+  // } else {
+  //   mgr.getUser().then(user => {
+  //     if (user) {
+  //       store.dispatch(UPDATE_USER, user);
+  //     } else {
+  //       store.dispatch(LOGOUT, user);
+  //     }
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
+  //   next();
+  // }
 });
 router.onError((e) => {
   console.log(e);

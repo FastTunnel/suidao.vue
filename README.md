@@ -3,6 +3,10 @@
 
 本项目是[sudao.io](https://suidao.io)网站前端源码
 
+## Nodejs
+
+`node-v12`
+
 ## Project setup
 ```
 npm install

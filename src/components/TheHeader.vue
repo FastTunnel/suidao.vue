@@ -122,12 +122,14 @@ export default {
       console.log(key, keyPath);
     },
     login() {
-      this.$store.dispatch(LOGIN_CODE);
+      // this.$store.dispatch(LOGIN_CODE);
+      this.loginByPwd();
     },
     loginByPwd() {
-      this.$router.push({
-        name: "login"
-      });
+      window.location.href = "/console.html#/login";
+      // this.$router.push({
+      //   name: "login"
+      // });
     },
     signup() {
       window.location.href = "/console.html#/signup";

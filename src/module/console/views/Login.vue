@@ -3,6 +3,7 @@
   padding: 10px 0;
   font-size: 30px;
 }
+
 .login {
   text-align: center;
 }
@@ -11,14 +12,7 @@
 <template>
   <div class="login">
     <div class="title">登录</div>
-    <el-form
-      :model="ruleForm"
-      status-icon
-      :rules="rules"
-      ref="ruleForm"
-      label-width="100px"
-      class="sign-form"
-    >
+    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="sign-form">
       <el-form-item label="注册邮箱" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
@@ -65,7 +59,10 @@ export default {
         if (valid) {
           that.$store
             .dispatch(LOGIN, this.ruleForm)
-            .then(() => this.$router.push({ name: "home" }))
+            .then((res) => {
+              console.log("登录成功", res, this.$router);
+              this.$router.push({ name: "home" })
+            })
             .catch(error => {
               that.$message.error(error);
             });
