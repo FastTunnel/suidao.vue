@@ -34,3 +34,6 @@ export const UPDATE_TUNNEL_ENABLED = "UPDATE_TUNNEL_ENABLED";
 
 // client
 export const ADD_CLIENT = "addClient";
+
+// user
+export const REFUND = "refund"

@@ -22,7 +22,7 @@ const actions = {
   [RESET_ACCESS](context) {
     return ApiService.post("user/resetAccess")
       .then((data) => {
-        context.commit(SET_PROFILE, data);
+        context.commit(SET_PROFILE, data.data);
         return data;
       })
       .catch(() => {
@@ -33,8 +33,8 @@ const actions = {
   [FETCH_PROFILE](context) {
     return ApiService.post("user/profiles")
       .then((data) => {
-        console.log("profiles", data);
-        context.commit(SET_PROFILE, data);
+        console.log("profiles", data.data);
+        context.commit(SET_PROFILE, data.data);
         return data;
       })
       .catch(() => {
@@ -46,7 +46,7 @@ const actions = {
     const { username } = payload;
     return ApiService.post(`profiles/${username}/follow`)
       .then(({ data }) => {
-        context.commit(SET_PROFILE, data.profile);
+        context.commit(SET_PROFILE, data.data.profile);
         return data;
       })
       .catch(() => {

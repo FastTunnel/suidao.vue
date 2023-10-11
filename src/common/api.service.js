@@ -15,7 +15,7 @@ const ApiService = {
   setHeader() {
     Vue.axios.defaults.headers.common[
       "Authorization"
-    ] = `Bearer ${store.getters.currentUser.token}`;
+    ] = `Bearer ${store.getters.currentUser?.token}`;
   },
 
   query(resource, params) {
@@ -38,7 +38,7 @@ const ApiService = {
       Vue.axios.post(`${resource}`, params)
         .then((res) => {
           if (res.data.success) {
-            resole(res.data.data);
+            resole(res.data);
           } else {
             reject(res.data.errorMsg);
           }

@@ -35,8 +35,9 @@ const actions = {
   [FETCH_CLIENTS](context, param) {
     return new Promise((resolve, reject) => {
       ApiService.post("Server/GetServers", param).then(res => {
-        context.commit(SET_CLIENTS, res);
-        resolve(res);
+        console.log(res);
+        context.commit(SET_CLIENTS, res.data);
+        resolve(res.data);
       }).catch(err => {
         reject(err);
       });

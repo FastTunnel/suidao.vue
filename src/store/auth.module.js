@@ -1,6 +1,7 @@
 import JwtService from "@/common/jwt.service";
 import ApiService from "@/common/api.service";
 import { SET_AUTH, PURGE_AUTH, SET_ERROR } from "./mutations.type";
+import { REFUND } from "./actions.type";
 import {
   LOGIN,
   LOGIN_CODE,
@@ -19,25 +20,24 @@ const state = {
   errors: null,
   user: null,
   token: "",
-  isAuthenticated: !!JwtService.getToken()
 };
 
 const getters = {
   currentUser(state) {
-    console.log("currentUser", state.user);
     if (state.user && state.user.token) {
+      console.log("currentUser", state.user);
       return state.user;
     }
 
     var json = localStorage.getItem("user")
     if (json) {
-      return JSON.parse(json);
+      var user = JSON.parse(json);
+      console.log("currentUser", user);
+      return user;
     }
 
+    console.log("currentUser", null);
     return null;
-  },
-  isAuthenticated(state) {
-    return state.isAuthenticated;
   }
 }
 
@@ -46,7 +46,6 @@ const mutations = {
     state.errors = error;
   },
   [SET_AUTH](state, user) {
-    state.isAuthenticated = true;
     state.user = user;
     state.errors = {};
 
@@ -58,9 +57,10 @@ const mutations = {
     // ApiService.setHeader();
   },
   [PURGE_AUTH](state) {
-    state.isAuthenticated = false;
-    state.user = {};
+
+    state.user = null;
     state.errors = {};
+    localStorage.removeItem("user");
     // JwtService.destroyItem(ID_USER);
     // JwtService.destroyToken();
     // mgr.signoutRedirect();
@@ -68,12 +68,15 @@ const mutations = {
 };
 
 const actions = {
+  [REFUND](context, data) {
+    return ApiService.post("user/refund", data)
+  },
   [LOGIN](context, credentials) {
     return new Promise((resolve, reject) => {
       ApiService.post("user/login", credentials)
         .then(res => {
           console.log(res);
-          context.commit(SET_AUTH, res);
+          context.commit(SET_AUTH, res.data);
           // if (data.success) {
           //   context.commit(SET_AUTH, res);
           //   resolve(data);
@@ -84,6 +87,7 @@ const actions = {
           resolve(res);
         })
         .catch(({ response }) => {
+          console.log(response);
           context.commit(SET_ERROR, response);
         });
     });
@@ -108,7 +112,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       ApiService.post("user/sign", credentials)
         .then(res => {
-          resolve(res);
+          resolve(res.data);
         })
         .catch(err => {
           context.commit(SET_ERROR, err);

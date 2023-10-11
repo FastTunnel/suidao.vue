@@ -88,6 +88,15 @@ const routes = [
         }
     },
     {
+        path: '/Refund',
+        name: 'refund',
+        component: () => import("./../views/Refund"),
+        meta: {
+            requiresAuth: false,
+            title: "找回密码"
+        }
+    },
+    {
         // 会匹配所有路径
         path: '*',
         component: () => import("./../views/_404"),

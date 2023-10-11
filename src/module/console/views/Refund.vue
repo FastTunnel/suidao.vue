@@ -11,19 +11,13 @@
 
 <template>
   <div class="login">
-    <div class="title">登录</div>
+    <div class="title">找回密码</div>
     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="sign-form">
       <el-form-item label="注册邮箱" prop="email">
         <el-input v-model="ruleForm.email"></el-input>
       </el-form-item>
-      <el-form-item label="登录密码" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
-      </el-form-item>
       <el-form-item label-width="100px">
-        <el-link :underline="false" type="info" @click="goToRefund">忘记密码?</el-link>
-      </el-form-item>
-      <el-form-item label-width="100px">
-        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">找回</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -32,42 +26,28 @@
 <script>
 import { mapState } from "vuex";
 import { validateEmail } from "@/utils/validator";
-import { LOGIN } from "@/store/actions.type";
+import ApiService from "@/common/api.service";
 
 export default {
   data() {
-    var validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请输入密码"));
-      } else {
-        callback();
-      }
-    };
-
     return {
       ruleForm: {
         email: "",
-        pass: ""
       },
       rules: {
-        pass: [{ validator: validatePass, trigger: "blur" }],
         email: [{ validator: validateEmail, trigger: "blur" }]
       }
     };
   },
   methods: {
-    goToRefund() {
-      this.$router.push({ name: "refund" })
-    },
     submitForm(formName) {
       let that = this;
       this.$refs[formName].validate(valid => {
         if (valid) {
-          that.$store
-            .dispatch(LOGIN, this.ruleForm)
-            .then((res) => {
-              console.log("登录成功", res, this.$router);
-              this.$router.push({ name: "console-index" })
+          ApiService.post("user/refund", this.ruleForm)
+            .then(res => {
+              console.log(res);
+              that.$message.error(res.errorMsg);
             })
             .catch(error => {
               console.log(error);

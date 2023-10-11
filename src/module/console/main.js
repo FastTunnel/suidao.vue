@@ -30,7 +30,8 @@ router.beforeEach((to, from, next) => {
 
   console.log(store.getters);
   if (store.getters.currentUser && store.getters.currentUser.token) {
-    next(); return;
+    next();
+    return;
   }
 
   next({ name: 'login' })

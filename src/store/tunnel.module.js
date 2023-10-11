@@ -28,7 +28,7 @@ const actions = {
   [UPDATE_TUNNEL_ENABLED](context, param) {
     return new Promise((resolve, reject) => {
       ApiService.post("Tunnel/UpdateEnabled", param).then(res => {
-        resolve(res);
+        resolve(res.data);
       }).catch(err => {
         reject(err);
       });
@@ -37,7 +37,7 @@ const actions = {
   [ADD_APP](context, param) {
     return new Promise((resolve, reject) => {
       ApiService.post("Tunnel/AddTunnel", param).then(res => {
-        resolve(res);
+        resolve(res.data);
       }).catch(err => {
         reject(err);
       });
@@ -47,7 +47,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       console.log("DEL_TUNNEL");
       ApiService.post("Tunnel/DelTunnel", param).then(res => {
-        resolve(res);
+        resolve(res.data);
       }).catch(err => {
         reject(err);
       });
@@ -56,8 +56,8 @@ const actions = {
   [FETCH_TUNNELS](context, param) {
     return new Promise((resolve, reject) => {
       ApiService.post("tunnel/GetTunnels", param).then(res => {
-        context.commit(SET_TUNNELS, res);
-        resolve(res);
+        context.commit(SET_TUNNELS, res.data);
+        resolve(res.data);
       }).catch(error => {
         reject(error);
       });

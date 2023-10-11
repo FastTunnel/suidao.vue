@@ -34,7 +34,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["profile", "isAuthenticated"])
+    ...mapGetters(["profile"])
   },
   mounted() {
     this.$store.dispatch(FETCH_PROFILE);
