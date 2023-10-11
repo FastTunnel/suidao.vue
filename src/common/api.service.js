@@ -40,6 +40,7 @@ const ApiService = {
           if (res.data.success) {
             resole(res.data);
           } else {
+            console.log(res.data);
             reject(res.data.errorMsg);
           }
         }).catch(error => {
