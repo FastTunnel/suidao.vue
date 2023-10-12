@@ -23,7 +23,8 @@
         <el-link :underline="false" type="info" @click="goToRefund">忘记密码?</el-link>
       </el-form-item>
       <el-form-item label-width="100px">
-        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">登录<i
+            class="el-icon-s-promotion el-icon--right"></i></el-button>
       </el-form-item>
     </el-form>
   </div>

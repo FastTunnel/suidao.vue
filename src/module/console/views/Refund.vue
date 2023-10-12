@@ -42,16 +42,25 @@ export default {
   methods: {
     submitForm(formName) {
       let that = this;
+      this.ruleForm.origin = location.origin;
       this.$refs[formName].validate(valid => {
         if (valid) {
+          const loading = this.$loading({
+            lock: true,
+            text: '找回中，请稍等...',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
+
           ApiService.post("user/refund", this.ruleForm)
             .then(res => {
-              console.log(res);
-              that.$message.error(res.errorMsg);
+              that.$message({ message: res.errorMsg, type: "success" });
+              loading.close();
             })
             .catch(error => {
               console.log(error);
               that.$message.error(error);
+              loading.close();
             });
         } else {
           console.log("error submit!!");

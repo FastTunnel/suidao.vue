@@ -97,6 +97,15 @@ const routes = [
         }
     },
     {
+        path: '/ResetPass',
+        name: 'resetPass',
+        component: () => import("./../views/ResetPass"),
+        meta: {
+            requiresAuth: false,
+            title: "重置密码"
+        }
+    },
+    {
         // 会匹配所有路径
         path: '*',
         component: () => import("./../views/_404"),
