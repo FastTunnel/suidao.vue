@@ -68,7 +68,7 @@ export default {
             .dispatch(LOGIN, this.ruleForm)
             .then((res) => {
               console.log("登录成功", res, this.$router);
-              this.$router.push({ name: "console-index" })
+              this.$router.replace({ name: "console-index" })
             })
             .catch(error => {
               console.log(error);
