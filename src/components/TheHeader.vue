@@ -53,17 +53,17 @@
         </el-link>
       </div>
       <div class="menu-item" style="float: right;">
-        <div v-if="!user">
+        <div v-if="!currentUser">
           <el-button size="medium" type="text" @click="login">登录</el-button>
           <el-button size="medium" @click="signup" type="primary" round>注册</el-button>
         </div>
-        <div v-if="user">
+        <div v-if="currentUser">
           <a href="/console.html#/" class="nav-link router-link-exact-active active">
             <div class="menu-item" style="padding-right: 45px;">控制台</div>
           </a>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
-              {{ user && user.email ? user.email : "" }}
+              {{ currentUser && currentUser.email ? currentUser.email : "" }}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
