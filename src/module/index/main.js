@@ -11,8 +11,8 @@ Vue.use(ELEMENT, { size: 'medium', zIndex: 3000 });
 import '@/assets/scss/main.scss'
 import '@/assets/scss/element-variables.scss'
 import '@/assets/scss/elment-adgust.scss'
-import Mgr from '@/common/SecurityService';
-let mgr = new Mgr();
+// import Mgr from '@/common/SecurityService';
+// let mgr = new Mgr();
 
 ApiService.init();
 Vue.config.productionTip = false

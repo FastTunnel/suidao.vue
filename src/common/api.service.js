@@ -1,15 +1,14 @@
 // import Vue from "vue";
 // import axios from "axios";
 import VueAxios from "vue-axios";
-import JwtService from "@/common/jwt.service.js";
 import { API_URL } from "@/common/config.js";
 import store from "@/store";
+import { LOGOUT } from "@/store/actions.type";
 
 const ApiService = {
   init() {
     Vue.use(VueAxios, axios);
     Vue.axios.defaults.baseURL = API_URL;
-    console.log('baseURL', API_URL);
   },
 
   setHeader() {
@@ -41,6 +40,12 @@ const ApiService = {
             resole(res.data);
           } else {
             console.log(res.data);
+            if (res.data.errorMsg == "invalid_token") {
+              // token已失效，清理
+              store.dispatch(LOGOUT).then((res) => {
+                console.log("退出登录", res);
+              });
+            }
             reject(res.data.errorMsg);
           }
         }).catch(error => {

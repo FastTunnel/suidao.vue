@@ -11,8 +11,8 @@ import {
   UPDATE_USER
 } from "./actions.type";
 
-import Mgr from '@/common/SecurityService';
-let mgr = new Mgr();
+// import Mgr from '@/common/SecurityService';
+// let mgr = new Mgr();
 
 const ID_USER = "id_user";
 
@@ -57,10 +57,9 @@ const mutations = {
     // ApiService.setHeader();
   },
   [PURGE_AUTH](state) {
-
+    localStorage.removeItem("user");
     state.user = null;
     state.errors = {};
-    localStorage.removeItem("user");
     // JwtService.destroyItem(ID_USER);
     // JwtService.destroyToken();
     // mgr.signoutRedirect();

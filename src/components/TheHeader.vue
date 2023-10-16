@@ -53,17 +53,17 @@
         </el-link>
       </div>
       <div class="menu-item" style="float: right;">
-        <div v-if="!currentUser">
+        <div v-if="!user">
           <el-button size="medium" type="text" @click="login">登录</el-button>
           <el-button size="medium" @click="signup" type="primary" round>注册</el-button>
         </div>
-        <div v-if="currentUser">
+        <div v-if="user">
           <a href="/console.html#/" class="nav-link router-link-exact-active active">
             <div class="menu-item" style="padding-right: 45px;">控制台</div>
           </a>
           <el-dropdown :hide-on-click="false">
             <span class="el-dropdown-link">
-              {{ currentUser && currentUser.email ? currentUser.email : "" }}
+              {{ user && user.email ? user.email : "" }}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu :hide-on-click="true" slot="dropdown">
@@ -80,10 +80,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import { LOGIN_CODE, LOGOUT } from "@/store/actions.type";
-import Mgr from "@/common/SecurityService";
-let mgr = new Mgr();
+// import Mgr from "@/common/SecurityService";
 
 export default {
   data() {
@@ -117,7 +116,8 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["currentUser"])
+    ...mapGetters(["currentUser"]),
+    ...mapState(["user"])
   },
   mounted() { }
 };
