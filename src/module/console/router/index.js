@@ -4,107 +4,107 @@
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: "/",
-        name: "console",
-        component: () => import("./../views/Console"),
-        meta: {
-            requiresAuth: true,
-            title: "控制台"
-        },
-        children: [
-            {
-                path: '',
-                name: 'console-index',
-                component: () => import("./../views/Console/Index"),
-                meta: {
-                    requiresAuth: true,
-                    title: "使用说明"
-                }
-            },
-            {
-                path: 'tunnel',
-                component: () => import("./../views/Console/Tunnel"),
-                meta: {
-                    requiresAuth: true,
-                    title: "隧道管理"
-                }
-            },
-            // {
-            //     path: 'client',
-            //     component: () => import("./../views/Console/Client"),
-            //     meta: {
-            //         requiresAuth: true,
-            //         title: "客户端管理"
-            //     }
-            // },
-            {
-                path: 'download',
-                component: () => import("./../views/Console/Download"),
-                meta: {
-                    requiresAuth: false,
-                    title: "下载客户端"
-                }
-            },
-            {
-                path: 'problems',
-                component: () => import("./../views/Console/Problems"),
-                meta: {
-                    requiresAuth: false,
-                    title: "常见问题"
-                }
-            },
-        ],
-    }, {
-        path: '/profile',
-        name: 'profile',
-        component: () => import("./../views/Profile"),
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
-        path: '/accessdenied',
-        name: 'accessDenied',
-        component: () => import("./../views/AccessDenied"),
-        meta: {
-            requiresAuth: false
-        }
-    },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: () => import("./../views/Signup"),
-        meta: {
-            requiresAuth: false
-        }
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: () => import("./../views/Login"),
-        meta: {
-            requiresAuth: false
-        }
-    },
-    {
-        path: '/Refund',
-        name: 'refund',
-        component: () => import("./../views/Refund"),
-        meta: {
-            requiresAuth: false,
-            title: "找回密码"
-        }
-    },
-    {
-        path: '/ResetPass',
-        name: 'resetPass',
-        component: () => import("./../views/ResetPass"),
-        meta: {
-            requiresAuth: false,
-            title: "重置密码"
-        }
-    },
+    // {
+    //     path: "/",
+    //     name: "console",
+    //     component: () => import("./../views/Console"),
+    //     meta: {
+    //         requiresAuth: true,
+    //         title: "控制台"
+    //     },
+    //     children: [
+    //         {
+    //             path: '',
+    //             name: 'console-index',
+    //             component: () => import("./../views/Console/Index"),
+    //             meta: {
+    //                 requiresAuth: true,
+    //                 title: "使用说明"
+    //             }
+    //         },
+    //         {
+    //             path: 'tunnel',
+    //             component: () => import("./../views/Console/Tunnel"),
+    //             meta: {
+    //                 requiresAuth: true,
+    //                 title: "隧道管理"
+    //             }
+    //         },
+    //         // {
+    //         //     path: 'client',
+    //         //     component: () => import("./../views/Console/Client"),
+    //         //     meta: {
+    //         //         requiresAuth: true,
+    //         //         title: "客户端管理"
+    //         //     }
+    //         // },
+    //         {
+    //             path: 'download',
+    //             component: () => import("./../views/Console/Download"),
+    //             meta: {
+    //                 requiresAuth: false,
+    //                 title: "下载客户端"
+    //             }
+    //         },
+    //         {
+    //             path: 'problems',
+    //             component: () => import("./../views/Console/Problems"),
+    //             meta: {
+    //                 requiresAuth: false,
+    //                 title: "常见问题"
+    //             }
+    //         },
+    //     ],
+    // }, {
+    //     path: '/profile',
+    //     name: 'profile',
+    //     component: () => import("./../views/Profile"),
+    //     meta: {
+    //         requiresAuth: true
+    //     }
+    // },
+    // {
+    //     path: '/accessdenied',
+    //     name: 'accessDenied',
+    //     component: () => import("./../views/AccessDenied"),
+    //     meta: {
+    //         requiresAuth: false
+    //     }
+    // },
+    // {
+    //     path: '/signup',
+    //     name: 'signup',
+    //     component: () => import("./../views/Signup"),
+    //     meta: {
+    //         requiresAuth: false
+    //     }
+    // },
+    // {
+    //     path: '/login',
+    //     name: 'login',
+    //     component: () => import("./../views/Login"),
+    //     meta: {
+    //         requiresAuth: false
+    //     }
+    // },
+    // {
+    //     path: '/Refund',
+    //     name: 'refund',
+    //     component: () => import("./../views/Refund"),
+    //     meta: {
+    //         requiresAuth: false,
+    //         title: "找回密码"
+    //     }
+    // },
+    // {
+    //     path: '/ResetPass',
+    //     name: 'resetPass',
+    //     component: () => import("./../views/ResetPass"),
+    //     meta: {
+    //         requiresAuth: false,
+    //         title: "重置密码"
+    //     }
+    // },
     {
         // 会匹配所有路径
         path: '*',

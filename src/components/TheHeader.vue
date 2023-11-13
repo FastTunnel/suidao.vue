@@ -52,7 +52,7 @@
           SuiDao
         </el-link>
       </div>
-      <div class="menu-item" style="float: right;">
+      <!-- <div class="menu-item" style="float: right;">
         <div v-if="!currentUser">
           <el-button size="medium" type="text" @click="login">登录</el-button>
           <el-button size="medium" @click="signup" type="primary" round>注册</el-button>
@@ -73,8 +73,7 @@
               <el-dropdown-item @click.native="logOut" divided>退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-        </div>
-      </div>
+        </div> </div>-->
     </div>
   </div>
 </template>
